@@ -133,3 +133,7 @@
 .my-carousel-bg {
   background-color: #f5f3f3 !important;
 }
+
+.inputRounded .MuiOutlinedInput-root {
+  border-radius: 30px;
+}

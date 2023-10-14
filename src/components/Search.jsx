@@ -7,6 +7,7 @@ const Search = () => {
         <div className="searchContainer">
           <div className="search">
             <TextField
+              className="inputRounded"
               id="outlined-basic"
               fullWidth
               label="Search Here"
