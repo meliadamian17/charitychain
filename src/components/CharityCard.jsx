@@ -12,7 +12,7 @@ import { SectionWrapper } from '../HOC';
 const MultiActionAreaCard = () => {
   return (
     
-      <Card sx={{ maxWidth: 345, borderRadius: "10px", width: 250}}>
+      <Card sx={{ maxWidth: 345, borderRadius: "10px"}}>
         <CardActionArea>
           <CardMedia
             component="img"
