@@ -46,7 +46,8 @@ const App = () => {
           } />
           
           {/* Route for the account page */}
-          <Route path="/account" element={<Account />} />
+          <Route path="/account" element={ <div><Account /></div>} />
+          
 
         </Routes>
 
