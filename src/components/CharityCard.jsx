@@ -12,6 +12,7 @@ import { useState } from 'react';
 import { db } from '../firebase';
 import { firebaseConfig } from '../firebase';
 import { getDatabase, ref, set, update } from "firebase/database";
+import { Link } from 'react-router-dom';
 
 
 const MultiActionAreaCard = ({ charity }) => {
@@ -101,6 +102,15 @@ const MultiActionAreaCard = ({ charity }) => {
             </Button>
           </div>
           </Popup>
+          <Link to={url} target="_blank" rel="noopener noreferrer">
+            <img
+              src="../src/assets/info.png"
+              alt="Info"
+              height={20}
+              width={20}
+              className="custom-close-button absolute bottom-4 right-12 cursor-pointer"
+            />
+          </Link>
         </CardActions>
       </Card> 
     
