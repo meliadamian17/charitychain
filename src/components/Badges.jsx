@@ -20,7 +20,7 @@ import Nature3 from '../assets/Nature3.png';
 import { styles } from '../styles'
 import { SectionWrapper } from '../HOC';
 import { motion } from 'framer-motion';
-import { textVariant } from '../utils/motion';
+import { textVariant, fadeIn } from '../utils/motion';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../contexts/AuthContext';
 import { useEffect } from 'react';
@@ -178,35 +178,24 @@ const Badges = () => {
     }
 
     }, [currentUser]);
-    
-    
 
-
-
-    // now determine which badges to display based on the donations array
-
-
-    
-
-
+    const badges = badgesToShow.length > 0 ? badgesToShow.map((badgeImg, index) => (
+        <motion.div 
+        variants={fadeIn("right","spring",0.2 * index, 0.75)}
+        >
+        <div key={index} className='m-2'>
+            <img height={90} width={90} src={badgeImg} alt="badge" />
+        </div>
+        </motion.div>
+    )) : <p className={`${styles.mainSectionSubText}`}> Sign In to Earn Badges!</p>;
 
     return (
         <motion.div variants={textVariant()}>
             <section id="badges"className='flex flex-col items-center'>
                 <p className={styles.mainSectionTitleText + ' border-b-2 border-black pb-2'}>Your Badges</p>
-                {/* <div className='flex justify-center mt-10'>
-                {badges.map((badge) => (
-                    <div key={badge.id} className='m-2'>
-                        <img height={90} width={90} src={badge.image} alt={badge.name} />
-                    </div>
-                ))}
-                </div> */}
+                
                 <div className='flex justify-center mt-10'>
-                    {badgesToShow.map((badgeImg, index) => (
-                        <div key={index} className='m-2'>
-                            <img height={90} width={90} src={badgeImg} alt="badge" />
-                        </div>
-                    ))}
+                    <>{badges} </>
                 </div>
                 
 
