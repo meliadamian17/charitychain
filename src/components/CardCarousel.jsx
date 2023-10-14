@@ -75,7 +75,7 @@ const CardCarousel = () => {
             <p>Loading...</p>
           ) : (
             <Carousel responsive={responsive} infinite={true} className="mt-[-20]">
-              {cardComponents}
+              {cardComponents2}
             </Carousel>
           )}
           {/* {filteredCharities.map(charity => 

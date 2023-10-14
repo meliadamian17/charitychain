@@ -14,10 +14,10 @@ export const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 export const auth = getAuth(app);
-const database = getDatabase(app);
+export const db = getDatabase(app);
 
 export const createUserProfileDocument = (user) => {
-  const userRef = ref(database, `Users/${user.uid}`);
+  const userRef = ref(db, `Users/${user.uid}`);
 
   // Check if the user already exists in the database
   get(userRef)
