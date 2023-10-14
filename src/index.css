@@ -79,13 +79,14 @@
   width: 40%;
   margin: 0;
   padding: 0;
+  display: block;
 }
 
 .aboutImage img {
   width: 100%; 
   height: auto;
   display: block;
-  object-fit: contain; /* Adjust to your needs, e.g., contain or cover */
+  object-fit: contain;
 }
 
 .aboutDes {
@@ -113,9 +114,18 @@
   color: #2E4F4F;
 }
 
-.text-my-olive:hover{
-  color: #0E8388
+.text-dark-olive{
+  color: #2E4F4F;
 }
+
+.text-dark-olive:hover{
+  color: #0E8388;
+}
+
+
+/* .text-my-olive:hover{
+  color: #0E8388
+} */
 
 .reactjs-popup-overlay {
   display: flex;
@@ -139,7 +149,6 @@
   width: 100%;
   align-items: center;
   flex-direction: column;
-
 }
 
 .search {

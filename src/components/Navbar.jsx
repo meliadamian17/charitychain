@@ -99,15 +99,15 @@ const Navbar = () => {
                 <input className="shadow appearance-none border rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="Password"/>
                 </div>
                 <div className="mb-6 flex items-center justify-between">
-                <button className="bg-olive font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline border" type="button">
+                <button className="text-dark-olive font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline border" type="button">
                     Sign In
                 </button>
-                <a className="inline-block align-baseline font-bold text-sm text-my-olive" href="#">
+                <a className="inline-block align-baseline font-bold text-sm text-dark-olive" href="#">
                     Create Account
                 </a>
                 </div>
             </form>
-            <button className="mt-4 bg-olive py-1 px-2 rounded-full self-end border" onClick={close}>Close</button>
+            <button className="mt-4 text-dark-olive py-1 px-2 rounded-full self-end border" onClick={close}>Close</button>
             </div>
         )}
         </Popup>
