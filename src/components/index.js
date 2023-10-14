@@ -7,6 +7,7 @@ import CharityCard from './CharityCard'
 import Account from './Account'
 import Footer from './Footer'
 import Board from './board';
+import Team from './Team'
 
 export {
     Navbar,
@@ -17,5 +18,6 @@ export {
     CharityCard,
     Account,
     Footer,
-    Board
+    Board,
+    Team
 }

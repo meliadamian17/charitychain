@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import './index.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { Navbar, Home, Search, Badges, Carousel, CharityCard, Account, Footer } from './components';
+import { Navbar, Home, Search, Badges, Carousel, CharityCard, Account, Footer, Team } from './components';
 import Board from './components/board';
 
 import { auth } from './firebase';
@@ -44,6 +44,7 @@ const App = () => {
               <Carousel />
               <Badges />
               <Board />
+              <Team />
             </div>
           } />
           
