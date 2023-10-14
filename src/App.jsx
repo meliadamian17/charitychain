@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import './index.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Navbar, Home, Search, Badges, Carousel, CharityCard, Account, Footer } from './components';
+import Board from './components/board';
 
 import { auth } from './firebase';
 import { onAuthStateChanged } from 'firebase/auth';
@@ -42,6 +43,7 @@ const App = () => {
               <Home />
               <Carousel />
               <Badges />
+              <Board />
             </div>
           } />
           

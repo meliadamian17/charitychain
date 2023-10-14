@@ -6,6 +6,7 @@ import Carousel from './CardCarousel'
 import CharityCard from './CharityCard'
 import Account from './Account'
 import Footer from './Footer'
+import Board from './board';
 
 export {
     Navbar,
@@ -15,5 +16,6 @@ export {
     Carousel,
     CharityCard,
     Account,
-    Footer
+    Footer,
+    Board
 }
