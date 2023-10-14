@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './index.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { Navbar, Home, Search, Badges, Carousel, CharityCard, Account } from './components';
+import { Navbar, Home, Search, Badges, Carousel, CharityCard, Account, Footer } from './components';
 
 const App = () => {
   return (
@@ -15,18 +15,16 @@ const App = () => {
               <Home />
               <Carousel />
               <Badges />
-              {/* ... any other components for the home page */}
             </div>
           } />
           
           {/* Route for the account page */}
           <Route path="/account" element={<Account />} />
 
-          {/* Add more Routes as needed */}
         </Routes>
 
         <div className="relative z-0">
-          {/*footer*/}
+          <Footer />
         </div>
       </div>
     </BrowserRouter>
