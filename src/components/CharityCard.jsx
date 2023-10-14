@@ -17,7 +17,7 @@ const MultiActionAreaCard = ({ charity }) => {
   return (
     
       <Card sx={{ maxWidth: 345, borderRadius: "10px"}}>
-        <CardActionArea>
+        
           <CardMedia
             component="img"
             maxHeight={250}
@@ -37,7 +37,7 @@ const MultiActionAreaCard = ({ charity }) => {
               Current: {current} of {goal}
             </Typography>
           </CardContent>
-        </CardActionArea>
+        
         <CardActions>
           <Button size="medium" sx={{ fontFamily: 'Poppins, sans-serif', color: "#0E8388"}}>
             Donate

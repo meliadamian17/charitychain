@@ -18,7 +18,8 @@ const CardCarousel = () => {
   const [searchTerm, setSearchTerm] = useState('');
 
   const filteredCharities = charities.filter(charity => 
-    charity.name.toLowerCase().includes(searchTerm.toLowerCase())
+    charity.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    charity.cause.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   useEffect(() => {
