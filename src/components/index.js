@@ -5,6 +5,7 @@ import Badges from './Badges'
 import Carousel from './CardCarousel'
 import CharityCard from './CharityCard'
 import Account from './Account'
+import Footer from './Footer'
 
 export {
     Navbar,
@@ -13,5 +14,6 @@ export {
     Badges,
     Carousel,
     CharityCard,
-    Account
+    Account,
+    Footer
 }
