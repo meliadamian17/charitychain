@@ -130,3 +130,6 @@
   border: #2C3333 1px solid;
   border-radius: 30px;
 }
+.my-carousel-bg {
+  background-color: #f5f3f3 !important;
+}

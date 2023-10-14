@@ -40,18 +40,29 @@ const CardCarousel = () => {
       <section id="charities">
         <p className={styles.mainSectionTitleText + ' border-b-2 border-black pb-2 mb-10'}>Charities</p>
         <Search />
-        <p className={styles.mainSectionSubText + ' mt-10'}>Popular</p>
+
+        <p className={styles.subSectionSubText + ' mt-10'}>Popular</p>
+        <div className="my-carousel-bg rounded-3xl p-5 my-5">        
         <Carousel responsive={responsive} className='mt-[-20]'>
           { cardComponents }
         </Carousel>
-        <p className={styles.mainSectionSubText + 'mt-5'}>New</p>
+        </div>
+
+        <p className={styles.subSectionSubText + 'mt-5'}>New</p>
+        <div className="my-carousel-bg rounded-3xl p-5 my-5">        
         <Carousel responsive={responsive}>
           { cardComponents }
         </Carousel>
-        <p className={styles.mainSectionSubText + 'mt-5'}>Diversity</p>
+        </div>
+
+        <p className={styles.subSectionSubText + 'mt-5'}>Diversity</p>
+        <div className="my-carousel-bg rounded-3xl p-5 my-5">        
         <Carousel responsive={responsive}>
           { cardComponents }
         </Carousel>
+        </div>
+
+
       </section>
       </motion.div>
   )
