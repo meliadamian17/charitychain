@@ -22,10 +22,10 @@ const MultiActionAreaCard = () => {
             className=""
           />
           <CardContent>
-          <Typography gutterBottom variant="h5" component="div" sx={{ fontFamily: 'Poppins, sans-serif' }}>
+          <Typography gutterBottom variant="h5" component="div" sx={{ fontFamily:'Poppins, sans-serif' }}>
               Name
             </Typography>
-            <Typography variant="body2" color="text.secondary" sx={{ fontFamily: 'Poppins, sans-serif' }}>
+            <Typography variant="body2" color="text.secondary" sx={{ fontFamily:'Poppins, sans-serif' }}>
               Cause
             </Typography>
           </CardContent>

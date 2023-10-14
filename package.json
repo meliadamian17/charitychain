@@ -29,6 +29,7 @@
     "react-slick": "^0.29.0",
     "reactjs-popup": "^2.0.6",
     "slick-carousel": "^1.8.1",
+    "typed.js": "^2.0.16",
     "v": "^0.3.0"
   },
   "devDependencies": {

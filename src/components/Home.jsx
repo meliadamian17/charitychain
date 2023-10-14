@@ -11,28 +11,64 @@ import Slider from "react-slick";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
-
-const images = [
-    Charity_Chain_logo,
-    Car2,
-    Car3,
-    Car4
-
-];
-
-const settings = {
-    dots: true,
-    infinite: true,
-    speed: 700,
-    slidesToShow: 1,
-    slidesToScroll:1,
-    autoplay: true,
-    autoplaySpeed: 3000,
-    cssEase: "linear"
-};
+import Typed from 'typed.js';
+import { useEffect, useRef, React, useState } from "react";
 
 const Home = () => {
+
+    const typedTextRef = useRef();
+
+    const images = [
+        Charity_Chain_logo,
+        Car2,
+        Car3,
+        Car4
+    ];
+
+    const [sectionInViewport, setSectionInViewport] = useState(false);
+
+    useEffect(() => {
+        const options = {
+          strings: ["CharityChain is a novel approach to charitable giving using e-transfer donations and a user-friendly platform. It turns e-transfer transactions into a means of creating a chain of generosity. It’s a unique way to spread generosity and raise awareness about various charitable causes while leveraging the convenience of e-transfers."],
+          typeSpeed: 20,
+          showCursor: true,
+        };
+      
+        const typed = new Typed(typedTextRef.current, options);
+
+        // const handleScroll = () => {
+        //     const sectionPosition = typedTextRef.current.getBoundingClientRect();
+        //     if (sectionPosition.top < window.innerHeight && sectionPosition.bottom >= 0) {
+        //         if (!sectionInViewport) {
+        //             typed.reset();
+        //             setSectionInViewport(true);
+        //         }
+        //     } else {
+        //         if (sectionInViewport) {
+        //             typed.destroy();
+        //             setSectionInViewport(false);
+        //         }
+        //     }
+        // };
+
+        //window.addEventListener("scroll", handleScroll);
+
+        return () => {
+            typed.destroy();
+            //window.removeEventListener("scroll", handleScroll);
+        };
+    }, [sectionInViewport]);
+
+      const settings = {
+        dots: true,
+        infinite: true,
+        speed: 700,
+        slidesToShow: 1,
+        slidesToScroll:1,
+        autoplay: true,
+        autoplaySpeed: 3000,
+        cssEase: "linear"
+    };
 
     return (
 
@@ -43,7 +79,7 @@ const Home = () => {
                             Who Are We?
                     </div>
                     <div className={styles.mainSectionSubText}>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        <span ref={typedTextRef}></span>
                     </div>
                     </div>
                     <div className="aboutImage">
