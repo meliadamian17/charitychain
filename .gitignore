@@ -59,3 +59,4 @@ node_modules/tailwindcss/node_modules/.bin/resolve.cmd
 node_modules/tailwindcss/node_modules/.bin/resolve.ps1
 
 deps
+node_modules
