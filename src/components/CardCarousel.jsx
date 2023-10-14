@@ -9,7 +9,6 @@ import { textVariant } from '../utils/motion';
 import { SectionWrapper } from '../HOC';
 import Search from './Search';
 import { styles } from '../styles';
-import MultiActionAreaCard from './CharityCard';
 
 const CardCarousel = () => {
   const [charityData, setCharityData] = useState([]);
@@ -24,7 +23,7 @@ const CardCarousel = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const query = ref(db, 'Charities'); // Update this path according to your Firebase structure
+      const query = ref(db, 'Charities');
       onValue(query, (snapshot) => {
         if (snapshot.exists()) {
           const data = snapshot.val();
