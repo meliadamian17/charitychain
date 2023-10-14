@@ -19,6 +19,8 @@ const MultiActionAreaCard = ({ charity }) => {
   const progress = (current/goal)*100;
   const [isPopupOpen, setPopupOpen] = useState(false);
   const [donationAmount, setDonationAmount] = useState(0);
+  const [showSharePopup, setShowSharePopup] = useState(false);
+  const [shareLink, setShareLink] = useState('');
   const remainingAmount = goal - current;
 
   const handleDonation = () => {
@@ -52,8 +54,6 @@ const MultiActionAreaCard = ({ charity }) => {
                 set(userTotalRef, donationAmount);
               }
             });
-  
-            setPopupOpen(false);
           })
           .catch((error) => {
             alert('Failed to update the charity. Please try again later.');
@@ -64,6 +64,23 @@ const MultiActionAreaCard = ({ charity }) => {
     } else {
       alert('Invalid donation amount. Please enter a valid amount.');
     }
+    if (current + donationAmount >= goal) {
+      setPopupOpen(false);
+      setShareLink(`http://localhost:5173/`);
+      setShowSharePopup(true);
+    } else {
+      setShowSharePopup(false);
+    }
+  };
+
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(shareLink)
+      .then(() => {
+        console.log('Link copied to clipboard');
+      })
+      .catch((error) => {
+        alert('Failed to copy link to clipboard');
+      });
   };
 
   return (
@@ -128,6 +145,17 @@ const MultiActionAreaCard = ({ charity }) => {
             </Button>
           </div>
           </Popup>
+          {showSharePopup && (
+          <Popup open={showSharePopup} onClose={() => setShowSharePopup(false)} modal closeOnDocumentClick contentStyle={{ borderRadius: '15px', padding: '20px' }}>
+            <div className="relative">
+              <p className="text-black mb-2">Share your donation!</p>
+              <div>
+                <a href={shareLink} target="_blank" rel="noopener noreferrer" className='text-black mr-5'>Share Link</a>
+                <button onClick={copyToClipboard} className='bg-black p-2 rounded-full'>Copy to Clipboard</button>
+              </div>
+            </div>
+          </Popup>
+        )}
           <Link to={url} target="_blank" rel="noopener noreferrer">
             <img
               src="../src/assets/info.png"
