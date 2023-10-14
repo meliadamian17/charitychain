@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { styles } from "../styles";
 import { navLinks } from "../constants";
@@ -10,6 +10,7 @@ import "reactjs-popup/dist/index.css";
 import Account from "./Account";
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase';
+import { AuthContext } from "../contexts/AuthContext";
 
 const Navbar = () => {
   const [active, setActive] = useState("");
@@ -21,6 +22,7 @@ const Navbar = () => {
   const [isCreateAccountMode, setCreateAccountMode] = useState(false);
   const [createAccountSuccess, setCreateAccountSuccess] = useState(false);
   const [isPopupOpen, setPopupOpen] = useState(false)
+  const currentUser = useContext(AuthContext);
        
   const onLogin = (e) => {
     e.preventDefault();
@@ -126,7 +128,7 @@ const Navbar = () => {
             </li>
           ))}
 
-          <li>
+        {!currentUser && (<li>
         <Popup trigger={<button className="bg-transparent text-white text-[18px] font-medium rounded-full"> Join Us! </button>} modal>
         {close => (
             <div className="p-4 bg-white  flex flex-col">
@@ -163,13 +165,14 @@ const Navbar = () => {
             </div>
         )}
         </Popup>
-          </li>
-          <li
+          </li>)}
+
+          {currentUser && (<li
             className={`${
               active === Account ? "text-lg" : "text-white"
             } text-[18px] font-medium cursor-pointer`}>
             <Link to="/account"> Account </Link>
-          </li>
+          </li>)}
 
         </ul>
 
