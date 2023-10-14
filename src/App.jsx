@@ -14,8 +14,8 @@ const App = () => {
       
       <Navbar />
       <Home />
-      <CharityCard />
-      <Search />
+      {/* <CharityCard /> */}
+      {/* <Search /> */}
       <Carousel />
       <Badges />
       </div>

@@ -11,7 +11,7 @@ import { SectionWrapper } from '../HOC';
 
 const MultiActionAreaCard = () => {
   return (
-    <motion.div variants={textVariant()}>
+    
       <Card sx={{ maxWidth: 345 }}>
         <CardActionArea>
           <CardMedia
@@ -35,7 +35,7 @@ const MultiActionAreaCard = () => {
           </Button>
         </CardActions>
       </Card> 
-      </motion.div>
+    
   );
 }
 
