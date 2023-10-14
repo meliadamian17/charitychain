@@ -179,7 +179,7 @@ const Badges = () => {
 
     }, [currentUser]);
 
-    const badges = badgesToShow.length > 0 ? badgesToShow.map((badgeImg, index) => (
+    const badges = currentUser != null ? badgesToShow.map((badgeImg, index) => (
         <motion.div 
         variants={fadeIn("right","spring",0.2 * index, 0.75)}
         >
@@ -192,7 +192,7 @@ const Badges = () => {
     return (
         <motion.div variants={textVariant()}>
             <section id="badges"className='flex flex-col items-center'>
-                <p className={styles.mainSectionTitleText + ' border-b-2 border-black pb-2'}>Your Badges</p>
+                <p className={styles.mainSectionTitleText + ' border-b-2 border-black pb-2'}>Your Stats</p>
                 
                 <div className='flex justify-center mt-10'>
                     <>{badges} </>

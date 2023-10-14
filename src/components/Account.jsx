@@ -8,11 +8,24 @@ import test from "../assets/BLM1.png"
 import { SectionWrapper } from '../HOC';
 import Badges from './Badges'
 import { db } from '../firebase';
-import { onValue, ref } from 'firebase/database';
+import { onValue, ref, get } from 'firebase/database';
 import { AuthContext } from '../contexts/AuthContext';
+import { signOut } from 'firebase/auth';
 
 const Account = () => {
-  const { currentUser } = useContext(AuthContext);  
+  const { currentUser } = useContext(AuthContext);
+  const navigate = useNavigate();  // <-- Using useNavigate hook for redirection
+  // const { currentUser } = useContext(AuthContext);
+
+  // Handle sign-out logic
+  const handleSignOut = async () => {
+    try {
+      await signOut();  // Sign out from Firebase
+      navigate('/');    // Redirect to home page
+    } catch (error) {
+      console.error("Error signing out: ", error);
+    }
+  };  
   useEffect(() => {
   let uid = "";
   let name = "";
@@ -48,6 +61,8 @@ const Account = () => {
             <h1 className="text-4xl font-bold text-dark-olive">Badges</h1>
             <Badges />
           </div>
+
+          <button onClick={handleSignOut} className="mt-4 bg-red-500 text-white px-4 py-2 rounded">Sign Out</button> {/* Sign-out button */}
           
     </div>
   );

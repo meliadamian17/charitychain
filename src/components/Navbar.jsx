@@ -8,12 +8,15 @@ import "../index.css";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import Account from "./Account";
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from 'firebase/auth';
 import { auth } from '../firebase';
 import { AuthContext } from "../contexts/AuthContext";
 import person from "../assets/person.png";
 
+
 const Navbar = () => {
+
+
   const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -23,7 +26,7 @@ const Navbar = () => {
   const [isCreateAccountMode, setCreateAccountMode] = useState(false);
   const [createAccountSuccess, setCreateAccountSuccess] = useState(false);
   const [isPopupOpen, setPopupOpen] = useState(false)
-  const currentUser = useContext(AuthContext);
+  const { currentUser, updateUser } = useContext(AuthContext);
   const [error, setError] = useState('');
        
   const onLogin = (e) => {
@@ -98,6 +101,15 @@ const Navbar = () => {
       window.location.hash = navId;
     }
   };
+
+  const handleSignOut = async () => {
+    try {
+        await signOut(auth);
+        updateUser(null); // Set user to null after signing out
+    } catch (error) {
+        console.error("Error signing out: ", error);
+    }
+};
 
   return (
     <nav
@@ -190,10 +202,8 @@ const Navbar = () => {
               className={`${
                 active === Account ? "text-lg" : "text-white"
               } cursor-pointer`}>
-              <Link to="/account"> 
-              {/* Account */}
-              <img src={person} alt='profile' className='w-12 h-12 object-contain paddingX'></img> 
-              </Link>
+                <button className="bg-transparent text-white text-[18px] font-medium rounded-full" onClick={handleSignOut}> Sign Out </button>
+              
             </li>)}
 
           </ul>
