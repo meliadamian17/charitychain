@@ -64,9 +64,7 @@
   background: #2C3333;
 }
 
-.my-bg-secondary{
 
-}
 .aboutDescription {
   display: flex;
   margin: 20px;
@@ -87,12 +85,36 @@
   background: #FFFFFF;
 }
 
+.bg-olive{
+  color: #2E4F4F
+}
+
 .text-light-teal{
   color: #0E8388;
 }
 
 .text-my-olive{
   color: #2E4F4F;
+}
+
+.text-my-olive:hover{
+  color: #0E8388
+}
+
+.reactjs-popup-overlay {
+  display: flex;
+  align-items: center; /* Vertically centers the popup content */
+  justify-content: center; /* Horizontally centers the popup content */
+  background: rgba(0, 0, 0, 0.5); /* A little transparency */
+}
+
+.reactjs-popup-content {
+  width: 300px; 
+  max-width: 100px;
+  min-height: 450px;
+  padding: 20px; /* Some padding around the content */
+  border-radius: 10px; /* Optional rounded corners */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Optional shadow for a bit of depth */
 }
 
 .searchContainer {
