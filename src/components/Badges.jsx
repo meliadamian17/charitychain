@@ -191,7 +191,7 @@ const Badges = () => {
         variants={fadeIn("right","spring",0.2 * index, 0.75)}
         >
         <div key={index} className='m-2'>
-            <img height={90} width={90} src={badgeImg} alt="badge" />
+            <img height={120} width={120} src={badgeImg} alt="badge" />
         </div>
         </motion.div>
     )) : <p className={`${styles.mainSectionSubText}`}> Sign In to Earn Badges and Donate!</p>;
@@ -203,7 +203,7 @@ const Badges = () => {
     return (
         <motion.div variants={textVariant()}>
             <section id="badges"className='flex flex-col items-center'>
-                <p className={styles.mainSectionTitleText + ' border-b-2 border-black pb-2'}>Your Stats</p>
+                <p className={styles.mainSectionTitleText + ' border-b-2 border-black pb-2'}>Achievements</p>
                 
                 <div className='flex justify-center mt-10'>
                     <>{badges} </>
