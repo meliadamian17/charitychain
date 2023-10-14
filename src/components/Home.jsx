@@ -1,8 +1,5 @@
 import { styles } from "../styles";
 import Charity_Chain_logo from "../assets/Charity_Chain_logo.png";
-import Native1 from "../assets/Native1.png";
-import Native2 from "../assets/Native2.png";
-import Native3 from "../assets/Native3.png";
 
 import { SectionWrapper } from "../HOC";
 import { motion } from "framer-motion";
@@ -15,9 +12,9 @@ import "slick-carousel/slick/slick-theme.css";
 
 const images = [
     Charity_Chain_logo,
-    Native1,
-    Native2,
-    Native3
+    Charity_Chain_logo,
+    Charity_Chain_logo,
+    Charity_Chain_logo
 
 ];
 
