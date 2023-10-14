@@ -43,10 +43,12 @@ const CardCarousel = () => {
         <Carousel responsive={responsive} className='mt-[-20]'>
           { cardComponents }
         </Carousel>
-        <Carousel responsive={responsive} className='mt-10'>
+        <p className={styles.mainSectionSubText + 'mt-5'}>New</p>
+        <Carousel responsive={responsive}>
           { cardComponents }
         </Carousel>
-        <Carousel responsive={responsive} className='mt-10'>
+        <p className={styles.mainSectionSubText + 'mt-5'}>Diversity</p>
+        <Carousel responsive={responsive}>
           { cardComponents }
         </Carousel>
       </section>
