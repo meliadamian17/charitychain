@@ -11,6 +11,7 @@ import Account from "./Account";
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase';
 import { AuthContext } from "../contexts/AuthContext";
+import person from "../assets/person.png";
 
 const Navbar = () => {
   const [active, setActive] = useState("");
@@ -114,67 +115,70 @@ const Navbar = () => {
             CharityChain | Linking Donations to Charities
           </p>
         </Link>
+          <ul className='list-none hidden sm:flex flex-row gap-10 justify-start items-center '>
+            {navLinks.map((nav) => (
+              <li
+              key={nav.id}
+              className={`${
+                active === nav.title ? "text-lg" : "text-white"
+              } text-[18px] font-medium cursor-pointer`}
+              onClick={() => handleNavLinkClick(nav.id, nav.title)}
+            >
+              <span>{nav.title}</span>
+              </li>
+            ))}
 
-        <ul className='list-none hidden sm:flex flex-row gap-10 justify-start'>
-          {navLinks.map((nav) => (
-            <li
-            key={nav.id}
-            className={`${
-              active === nav.title ? "text-lg" : "text-white"
-            } text-[18px] font-medium cursor-pointer`}
-            onClick={() => handleNavLinkClick(nav.id, nav.title)}
-          >
-            <span>{nav.title}</span>
-            </li>
-          ))}
+          {!currentUser && (<li>
+          <Popup trigger={<button className="bg-transparent text-white text-[18px] font-medium rounded-full"> Join Us! </button>} modal>
+          {close => (
+              <div className="p-4 bg-white  flex flex-col">
+              <h2 className="text-2xl font-black mb-6 text-darkest-green">Login</h2>
+              <form className="flex flex-col justify-between flex-grow">
+                  <div className="mb-6">
+                  <label className="block text-my-olive text-sm font-bold mb-2" htmlFor="email-address">
+                      Email address
+                  </label>
+                  <input className="shadow appearance-none border rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline" id="email-address"
+                                      name="email"
+                                      type="email"                                    
+                                      required                                                                                
+                                      placeholder="Email address"
+                                      onChange={(e)=>setEmail(e.target.value)}/>
+                  </div>
+                  <div className="mb-6">
+                  <label className="block text-my-olive text-sm font-bold mb-2" htmlFor="password">
+                      Password
+                  </label>
+                  <input className="shadow appearance-none border rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline" id="password" name="password" type="password" placeholder="Password" required                                                                                
+                                      onChange={(e)=>setPassword(e.target.value)} />
+                  </div>
+                  <div className="mb-6 flex items-center justify-between">
+                  <button className="text-dark-olive font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline border" type="button" onClick={isCreateAccountMode ? onCreateAccount : onLogin}>
+          {isCreateAccountMode ? 'Create Account' : 'Sign In'}
+        </button>
+        <a className="inline-block align-baseline font-bold text-sm text-dark-olive" href="#" onClick={toggleMode}>
+          {isCreateAccountMode ? 'Already have an account? Sign In' : 'Create Account'}
+        </a>
+                  </div>
+                  </form>
+              <button className="mt-4 text-dark-olive py-1 px-2 rounded-full self-end border" onClick={close}>Close</button>
+              </div>
+          )}
+          </Popup>
+            </li>)}
 
-        {!currentUser && (<li>
-        <Popup trigger={<button className="bg-transparent text-white text-[18px] font-medium rounded-full"> Join Us! </button>} modal>
-        {close => (
-            <div className="p-4 bg-white  flex flex-col">
-            <h2 className="text-2xl font-black mb-6 text-darkest-green">Login</h2>
-            <form className="flex flex-col justify-between flex-grow">
-                <div className="mb-6">
-                <label className="block text-my-olive text-sm font-bold mb-2" htmlFor="email-address">
-                    Email address
-                </label>
-                <input className="shadow appearance-none border rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline" id="email-address"
-                                    name="email"
-                                    type="email"                                    
-                                    required                                                                                
-                                    placeholder="Email address"
-                                    onChange={(e)=>setEmail(e.target.value)}/>
-                </div>
-                <div className="mb-6">
-                <label className="block text-my-olive text-sm font-bold mb-2" htmlFor="password">
-                    Password
-                </label>
-                <input className="shadow appearance-none border rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline" id="password" name="password" type="password" placeholder="Password" required                                                                                
-                                    onChange={(e)=>setPassword(e.target.value)} />
-                </div>
-                <div className="mb-6 flex items-center justify-between">
-                <button className="text-dark-olive font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline border" type="button" onClick={isCreateAccountMode ? onCreateAccount : onLogin}>
-        {isCreateAccountMode ? 'Create Account' : 'Sign In'}
-      </button>
-      <a className="inline-block align-baseline font-bold text-sm text-dark-olive" href="#" onClick={toggleMode}>
-        {isCreateAccountMode ? 'Already have an account? Sign In' : 'Create Account'}
-      </a>
-                </div>
-                </form>
-            <button className="mt-4 text-dark-olive py-1 px-2 rounded-full self-end border" onClick={close}>Close</button>
-            </div>
-        )}
-        </Popup>
-          </li>)}
+            {currentUser && (<li
+              className={`${
+                active === Account ? "text-lg" : "text-white"
+              } cursor-pointer`}>
+              <Link to="/account"> 
+              {/* Account */}
+              <img src={person} alt='profile' className='w-12 h-12 object-contain paddingX'></img> 
+              </Link>
+            </li>)}
 
-          {currentUser && (<li
-            className={`${
-              active === Account ? "text-lg" : "text-white"
-            } text-[18px] font-medium cursor-pointer`}>
-            <Link to="/account"> Account </Link>
-          </li>)}
-
-        </ul>
+          </ul>
+          
 
         <div className='sm:hidden flex flex-1 justify-end items-center'>
           <img

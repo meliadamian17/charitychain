@@ -31,8 +31,8 @@ const MultiActionAreaCard = () => {
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Button className={styles.mainSectionSubText}>
-            Donate
+          <Button size="medium" sx={{ fontFamily: 'Poppins, sans-serif', color: "#0E8388"}}>
+          Donate
           </Button>
         </CardActions>
       </Card> 
