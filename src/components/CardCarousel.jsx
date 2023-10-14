@@ -37,16 +37,18 @@ const CardCarousel = () => {
 
   return (
     <motion.div variants={textVariant()}>
-      <section>
+      <section id="charities">
         <p className={styles.mainSectionTitleText + ' border-b-2 border-black pb-2 mb-10'}>Charities</p>
         <Search />
         <p className={styles.mainSectionSubText + ' mt-10'}>Popular</p>
+        <Carousel responsive={responsive} className='mt-[-20]'>
+          { cardComponents }
+        </Carousel>
+        <p className={styles.mainSectionSubText + 'mt-5'}>New</p>
         <Carousel responsive={responsive}>
           { cardComponents }
         </Carousel>
-        <Carousel responsive={responsive}>
-          { cardComponents }
-        </Carousel>
+        <p className={styles.mainSectionSubText + 'mt-5'}>Diversity</p>
         <Carousel responsive={responsive}>
           { cardComponents }
         </Carousel>

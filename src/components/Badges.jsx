@@ -26,7 +26,7 @@ const badges = [
 const Badges = () => {
     return (
         <motion.div variants={textVariant()}>
-            <section className='flex flex-col items-center'>
+            <section id="badges"className='flex flex-col items-center'>
                 <p className={styles.mainSectionTitleText + ' border-b-2 border-black pb-2'}>Your Badges</p>
                 <div className='flex justify-center mt-10'>
                 {badges.map((badge) => (
