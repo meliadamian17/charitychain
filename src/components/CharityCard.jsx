@@ -8,10 +8,9 @@ import Charity_Chain_logo from "../assets/Charity_Chain_logo.png";
 import { styles } from "../styles";
 import { SectionWrapper } from '../HOC';
 import Popup from 'reactjs-popup';
-import { useState } from 'react';
-import { db } from '../firebase';
-import { firebaseConfig } from '../firebase';
-import { getDatabase, ref, set, update } from "firebase/database";
+import { useState, useEffect, useContext } from 'react';
+import { db, auth } from '../firebase';
+import { getDatabase, ref, set, get } from "firebase/database";
 import { Link } from 'react-router-dom';
 
 
@@ -25,16 +24,43 @@ const MultiActionAreaCard = ({ charity }) => {
   const handleDonation = () => {
     if (donationAmount > 0 && donationAmount <= remainingAmount) {
       const charityRef = ref(db, `/Charities/${charity.id}`);
+      const user = auth.currentUser;
   
-      const newCurrent = parseInt(current) + parseInt(donationAmount);
+      if (user) {
+        const userRef = ref(db, `/Users/${user.uid}`);
   
-      set(charityRef, { ...charity, current: newCurrent })
-        .then(() => {
-          setPopupOpen(false);
-        })
-        .catch((error) => {
-          alert('Failed to update the charity. Please try again later.');
-        });
+        const newCurrent = parseInt(current) + parseInt(donationAmount);
+  
+        set(charityRef, { ...charity, current: newCurrent })
+          .then(() => {
+            const userRef = ref(db, `/Users/${user.uid}/Donations/${cause}`);
+            get(userRef).then((snapshot) => {
+              if (snapshot.exists()) {
+                const currentDonation = parseInt(snapshot.val()) + parseInt(donationAmount);
+                set(userRef, currentDonation);
+              } else {
+                set(userRef, donationAmount);
+              }
+            });
+  
+            const userTotalRef = ref(db, `/Users/${user.uid}/Total`);
+            get(userTotalRef).then((snapshot) => {
+              if (snapshot.exists()) {
+                const total = parseInt(snapshot.val()) + parseInt(donationAmount);
+                set(userTotalRef, total);
+              } else {
+                set(userTotalRef, donationAmount);
+              }
+            });
+  
+            setPopupOpen(false);
+          })
+          .catch((error) => {
+            alert('Failed to update the charity. Please try again later.');
+          });
+      } else {
+        alert('User is not authenticated. Please log in before donating.');
+      }
     } else {
       alert('Invalid donation amount. Please enter a valid amount.');
     }
