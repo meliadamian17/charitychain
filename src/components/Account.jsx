@@ -6,11 +6,33 @@ import { navLinks } from "../constants";
 import "../index.css";
 import test from "../assets/BLM1.png"
 import { SectionWrapper } from '../HOC';
-// import Community from './Community'
 import Badges from './Badges'
+import { db } from '../firebase';
+import { onValue, ref } from 'firebase/database';
+import { AuthContext } from '../contexts/AuthContext';
 
 const Account = () => {
-    console.log("Account page");
+  const { currentUser } = useContext(AuthContext);  
+  useEffect(() => {
+  let uid = "";
+  let name = "";
+  console.log("Account page");
+  if (currentUser) {
+    uid = currentUser.uid;
+    if(uid){
+        const userRef = ref(db, `Users/${currentUser.uid}`);
+        console.log("UID", uid);
+  
+    get(userRef).then((snapshot) => {
+        if (snapshot.exists()) {
+          const userData = snapshot.val();
+          const user = userData[uid];
+          name = user.Name;
+        }
+    })
+    }
+  } 
+}, [currentUser]);
   return (
     <div className='my-main-bg h-[100vh] pt-[111px]'> 
         
@@ -24,6 +46,7 @@ const Account = () => {
           </div>
           <div className="flex items-center justify-start">
             <h1 className="text-4xl font-bold text-dark-olive">Badges</h1>
+            <Badges />
           </div>
           
     </div>

@@ -30,7 +30,6 @@ fetchData();
 
 
 const Board = () => {
-
   return (
     <motion.div variants={textVariant()}>
     
