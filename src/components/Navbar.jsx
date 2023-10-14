@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { styles } from "../styles";
 import { navLinks } from "../constants";
 import Charity_Chain_logo from "../assets/Charity_Chain_logo.png";
@@ -8,6 +8,7 @@ import close from "../assets/close.png";
 import "../index.css";
 import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
+import Account from "./Account";
 
 const Navbar = () => {
   const [active, setActive] = useState("");
@@ -28,6 +29,21 @@ const Navbar = () => {
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const navigate = useNavigate();
+
+  const handleNavLinkClick = (navId, navTitle) => {
+    setActive(navTitle);
+    if (window.location.pathname !== "/") {
+      navigate("/"); 
+      // Once it has navigated to '/', we update the hash to scroll to the section
+      setTimeout(() => {
+        window.location.hash = navId;
+      }, 0);
+    } else {
+      window.location.hash = navId;
+    }
+  };
 
   return (
     <nav
@@ -54,21 +70,21 @@ const Navbar = () => {
         <ul className='list-none hidden sm:flex flex-row gap-10 justify-start'>
           {navLinks.map((nav) => (
             <li
-              key={nav.id}
-              className={`${
-                active === nav.title ? "text-lg" : "text-white"
-              } text-[18px] font-medium cursor-pointer`}
-              onClick={() => setActive(nav.title)}
-            >
-              <a href={`#${nav.id}`}>{nav.title}</a>
+            key={nav.id}
+            className={`${
+              active === nav.title ? "text-lg" : "text-white"
+            } text-[18px] font-medium cursor-pointer`}
+            onClick={() => handleNavLinkClick(nav.id, nav.title)}
+          >
+            <span>{nav.title}</span>
             </li>
           ))}
 
           <li>
-        <Popup trigger={<button className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-full"> Join Us! </button>} modal>
+        <Popup trigger={<button className="bg-transparent text-white text-[18px] font-medium rounded-full"> Join Us! </button>} modal>
         {close => (
-            <div className="p-4 bg-white rounded-md flex flex-col">
-            <h2 className="text-2xl mb-6">Login</h2>
+            <div className="p-4 bg-white  flex flex-col">
+            <h2 className="text-2xl font-black mb-6 text-darkest-green">Login</h2>
             <form className="flex flex-col justify-between flex-grow">
                 <div className="mb-6">
                 <label className="block text-my-olive text-sm font-bold mb-2" htmlFor="username">
@@ -96,6 +112,13 @@ const Navbar = () => {
         )}
         </Popup>
           </li>
+          <li
+            className={`${
+              active === Account ? "text-lg" : "text-white"
+            } text-[18px] font-medium cursor-pointer`}>
+            <Link to="/account"> Account </Link>
+          </li>
+
         </ul>
 
         <div className='sm:hidden flex flex-1 justify-end items-center'>
