@@ -56,9 +56,9 @@ const CardCarousel = () => {
     <CharityCard key={index} charity={charity} />
   ));
 
-  const cardComponents2 = filteredCharities.map((charity, index) => (
-    <CharityCard key={index} charity={charity} />
-  ));
+  const cardComponents2 = filteredCharities.length > 0 ? filteredCharities.map((charity, index) => (
+      <CharityCard key={index} charity={charity} />
+  )) : <p className={`${styles.mainSectionSubText}`}>No Results Found</p>;
 
 
   return (
@@ -68,8 +68,9 @@ const CardCarousel = () => {
           Charities
         </p>
         
-        <Search onSearchChange={setSearchTerm} />
-        <p className={styles.subSectionSubText + ' mt-10'}>Popular</p>
+        <Search onSearchChange={setSearchTerm}  />
+        <br></br>
+        {/* <p className={styles.subSectionSubText + ' mt-10'}>Popular</p> */}
         <div className="my-carousel-bg rounded-3xl p-5 my-5">
           
           {loading ? (

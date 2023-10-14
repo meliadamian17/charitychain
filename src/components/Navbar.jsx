@@ -24,6 +24,7 @@ const Navbar = () => {
   const [createAccountSuccess, setCreateAccountSuccess] = useState(false);
   const [isPopupOpen, setPopupOpen] = useState(false)
   const currentUser = useContext(AuthContext);
+  const [error, setError] = useState('');
        
   const onLogin = (e) => {
     e.preventDefault();
@@ -32,12 +33,14 @@ const Navbar = () => {
         const user = userCredential.user;
         setLoginSuccess(true);
         console.log(user);
+        setError('');
         setPopupOpen(false);
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorCode, errorMessage);
+        setError('Invalid login credentials. Please try again.')
         setLoginSuccess(false);
       });
   }
@@ -49,6 +52,7 @@ const Navbar = () => {
         setCreateAccountSuccess(true);
         console.log(userCredential.user);
         createUserProfileDocument(user);
+        setError('');
         setPopupOpen(false);
       })
       .catch((error) => {
@@ -130,27 +134,35 @@ const Navbar = () => {
             ))}
 
           {!currentUser && (<li>
-          <Popup trigger={<button className="bg-transparent text-white text-[18px] font-medium rounded-full"> Join Us! </button>} modal>
+          <Popup trigger={<button className="bg-transparent text-white text-[18px] font-medium rounded-full"> Join Us! </button>} modal
+          contentStyle={{borderRadius: '15px'}}>
           {close => (
               <div className="p-4 bg-white  flex flex-col">
               <h2 className="text-2xl font-black mb-6 text-darkest-green">Login</h2>
+              {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
               <form className="flex flex-col justify-between flex-grow">
                   <div className="mb-6">
                   <label className="block text-my-olive text-sm font-bold mb-2" htmlFor="email-address">
                       Email address
                   </label>
-                  <input className="shadow appearance-none border rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline" id="email-address"
+                  <input className="shadow appearance-none border rounded w-full py-2 px-3 text-light-teal leading-tight focus:outline-none focus:shadow-outline" id="email-address"
                                       name="email"
-                                      type="email"                                    
+                                      type="email"
+                                      style={{backgroundColor: '#FFFFFF'}}                                 
                                       required                                                                                
                                       placeholder="Email address"
+                                      onFocus={(e)=>e.target.placeholder = ""}
+                                      onBlur={(e)=>e.target.placeholder = "Email address"}
                                       onChange={(e)=>setEmail(e.target.value)}/>
                   </div>
                   <div className="mb-6">
                   <label className="block text-my-olive text-sm font-bold mb-2" htmlFor="password">
                       Password
                   </label>
-                  <input className="shadow appearance-none border rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline" id="password" name="password" type="password" placeholder="Password" required                                                                                
+                  <input className="shadow appearance-none border rounded w-full py-2 px-3 text-light-teal leading-tight focus:outline-none focus:shadow-outline" id="password" name="password" type="password" placeholder="Password" required
+                                      style={{backgroundColor: '#FFFFFF'}}
+                                      onFocus={(e)=>e.target.placeholder = ""}
+                                      onBlur={(e)=>e.target.placeholder = "Password"}                                                                                 
                                       onChange={(e)=>setPassword(e.target.value)} />
                   </div>
                   <div className="mb-6 flex items-center justify-between">
@@ -162,7 +174,13 @@ const Navbar = () => {
         </a>
                   </div>
                   </form>
-              <button className="mt-4 text-dark-olive py-1 px-2 rounded-full self-end border" onClick={close}>Close</button>
+              <button className="mt-4 text-dark-olive py-1 px-2 rounded-full self-end border" 
+              onClick={() =>{
+                setError('');
+                close();
+              }}>
+                Close
+                </button>
               </div>
           )}
           </Popup>
