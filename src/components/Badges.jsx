@@ -26,6 +26,7 @@ import { AuthContext } from '../contexts/AuthContext';
 import { useEffect } from 'react';
 import { db } from '../firebase';
 import { getDatabase, ref, get } from "firebase/database";
+import { NumericFormat } from 'react-number-format';
 
 
 // const badges = [
@@ -102,6 +103,8 @@ const Badges = () => {
     let uid = "";
     const [badgesToShow, setBadgesToShow] = useState([]);
     const [donations, setDonations] = useState([]);
+    const [totalDonation, setTotalDonation] = useState(0);  // <-- Declare state for total donation
+
 
 
 
@@ -110,7 +113,11 @@ const Badges = () => {
         uid = currentUser.uid;
         if(uid){
             const userRef = ref(db, `Users/${currentUser.uid}/Donations`);
+            const totalRef = ref(db, `Users/${uid}/Total`);
             console.log("UID", uid);
+        get(totalRef).then((snapshot) => {
+            setTotalDonation(snapshot.val())
+        });
 
         // Using 'get' function to fetch the data
         get(userRef).then((snapshot) => {
@@ -197,6 +204,9 @@ const Badges = () => {
                 <div className='flex justify-center mt-10'>
                     <>{badges} </>
                 </div>
+
+                <p className={`${styles.mainSectionSubText} mt-14 text-lg`}> You've Donated </p>
+                <p className={`${styles.mainSectionTitleText} mt-0`}> <NumericFormat displayType="text" value={totalDonation.toFixed(2)} thousandSeparator={true} prefix={'$'}/> </p>
                 
 
             </section>
