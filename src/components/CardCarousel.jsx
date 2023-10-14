@@ -56,7 +56,7 @@ const CardCarousel = () => {
           {loading ? (
             <p>Loading...</p>
           ) : (
-            <Carousel responsive={responsive} className="mt-[-20]">
+            <Carousel responsive={responsive} infinite={true} className="mt-[-20]">
               {cardComponents}
             </Carousel>
           )}

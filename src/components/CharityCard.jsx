@@ -32,7 +32,7 @@ const MultiActionAreaCard = ({ charity }) => {
             <Typography variant="body2" color="text.secondary" sx={{ fontFamily:'Poppins, sans-serif' }}>
               { cause }
             </Typography>
-            <LinearProgress variant="determinate" value={progress} sx={{ height: 10 }} />
+            <LinearProgress variant="determinate" value={progress} sx={{ height: 10, borderRadius: "5px" }} />
             <Typography variant="body2" color="text.secondary" sx={{ fontFamily: 'Poppins, sans-serif' }}>
               Current: {current} of {goal}
             </Typography>
