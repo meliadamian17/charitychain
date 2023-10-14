@@ -10,7 +10,6 @@
   font-family: "Poppins", sans-serif;
   scroll-behavior: smooth;
   color-scheme: dark;
-  background-color: #FFF3DA;
 }
 
 .hash-span {
@@ -22,6 +21,7 @@
 .text-darkest {
   color: #BEADFA;
 }
+
 
 .text-medium {
   color: #D0BFFF;
@@ -35,24 +35,38 @@
   color: #FFF3DA;
 }
 
+.text-tan:hover {
+  color: #eaeaea;
+}
+
+.text-white {
+  color: #FFFFFF;
+}
+
+.text-white:hover{
+  color: #eaeaea ;
+}
+
+.text-darkest:hover{
+  color: #A0A0A0;
+}
+
+.text-lg{
+  color: #eaeaea
+}
+
 .navbar-dropdown-background{
   background: rgb(255,243,218);
   background: linear-gradient(90deg, rgba(255,243,218,1) 0%, rgba(223,204,251,1) 58%, rgba(190,173,250,1) 100%);
 }
 
-.bg-primary{
-
-
+.my-bg-primary{
+  background: #BEADFA;
 }
 
-.bg-secondary{
+.my-bg-secondary{
 
 }
-
-.bg-transparent{
-
-}
-
 .aboutDescription {
   display: flex;
   margin: 20px;
@@ -68,6 +82,3 @@
   display: inline-block;
   width: 50%;
 }
-
-
-
