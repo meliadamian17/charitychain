@@ -2,7 +2,7 @@ const styles = {
     //we can definitely toy around with these, just some simple font styles i wanted to use for most of the site
     paddingX: "sm:px-16 px-6",
     paddingY: "sm:py-16 py-6",
-    padding: "sm:px-16 px-6 sm:py-16 py-10",
+    padding: "sm:px-16 px-6 sm:py-9 py-5",
   
     mainSectionTitleText:
        "font-black text-my-olive lg:text-[60px] sm:text-[60px] xs:text-[50px] text-[40px] lg:leading-[98px] mt-2",
