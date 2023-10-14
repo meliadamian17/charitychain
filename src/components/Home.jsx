@@ -1,5 +1,8 @@
 import { styles } from "../styles";
 import Charity_Chain_logo from "../assets/Charity_Chain_logo.png";
+import Car2 from "../assets/AboutCarousel2.png";
+import Car3 from "../assets/AboutCarousel3.png";
+import Car4 from "../assets/AboutCarousel4.png";
 
 import { SectionWrapper } from "../HOC";
 import { motion } from "framer-motion";
@@ -12,20 +15,20 @@ import "slick-carousel/slick/slick-theme.css";
 
 const images = [
     Charity_Chain_logo,
-    Charity_Chain_logo,
-    Charity_Chain_logo,
-    Charity_Chain_logo
+    Car2,
+    Car3,
+    Car4
 
 ];
 
 const settings = {
     dots: true,
     infinite: true,
-    speed: 500,
+    speed: 700,
     slidesToShow: 1,
     slidesToScroll:1,
     autoplay: true,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 3000,
     cssEase: "linear"
 };
 
