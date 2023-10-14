@@ -40,13 +40,13 @@ const CardCarousel = () => {
       <section>
         <p className={styles.mainSectionTitleText + ' border-b-2 border-black pb-2'}>Charities</p>
         <p className={styles.mainSectionSubText + ' mt-10'}>Popular</p>
-        <Carousel responsive={responsive} className='mt-[-20]'>
+        <Carousel responsive={responsive}>
           { cardComponents }
         </Carousel>
-        <Carousel responsive={responsive} className='mt-10'>
+        <Carousel responsive={responsive}>
           { cardComponents }
         </Carousel>
-        <Carousel responsive={responsive} className='mt-10'>
+        <Carousel responsive={responsive}>
           { cardComponents }
         </Carousel>
       </section>
