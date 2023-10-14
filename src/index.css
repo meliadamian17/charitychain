@@ -179,7 +179,8 @@
 
 .board {
   text-align: center;
-  max-width: 500px;
+  width: 650px;
+  max-width: 700px;
 }
 
 .board .leaderboard{
@@ -209,11 +210,24 @@
 }
 
 #profile .flex img{
-  width: 20%;
+  width: 80px;
+  max-width: 80px;
   border-radius: 50%;
 }
 
 #profile .flex .info{
  padding: 1em;
+ font-size: 20px;
+ font-weight: bold;
+}
+
+#profile .flex .info h3 {
+  color: #2E4F4F;
+}
+
+#profile .flex span{
+  font-size: 20px;
+  font-weight: bolder;
+  color: #2E4F4F;
 }
 

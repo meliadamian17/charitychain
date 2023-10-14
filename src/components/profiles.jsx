@@ -23,7 +23,7 @@ function Item(data){
                             </div>                
                         </div>
                         <div className="item text-dark-olive">
-                            <span>{value.total}</span>
+                            <span>{'$' + value.total}</span>
                         </div>
                     </div>
                     )
