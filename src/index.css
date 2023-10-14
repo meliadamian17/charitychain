@@ -52,3 +52,22 @@
 .bg-transparent{
 
 }
+
+.aboutDescription {
+  display: flex;
+  margin: 20px;
+  align-items: center;
+}
+
+.aboutImage{
+  width: 40%;
+  margin: 2rem 2rem 4rem 5rem;
+}
+
+.aboutDes {
+  display: inline-block;
+  width: 50%;
+}
+
+
+
