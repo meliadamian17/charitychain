@@ -1,8 +1,36 @@
 import { styles } from "../styles";
 import Charity_Chain_logo from "../assets/Charity_Chain_logo.png";
+import Native1 from "../assets/Native1.png";
+import Native2 from "../assets/Native2.png";
+import Native3 from "../assets/Native3.png";
+
 import { SectionWrapper } from "../HOC";
 import { motion } from "framer-motion";
 import { textVariant } from "../utils/motion";
+import Slider from "react-slick";
+
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
+
+const images = [
+    Charity_Chain_logo,
+    Native1,
+    Native2,
+    Native3
+
+];
+
+const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll:1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    cssEase: "linear"
+};
 
 const Home = () => {
 
@@ -19,7 +47,13 @@ const Home = () => {
                     </div>
                     </div>
                     <div className="aboutImage">
-                        <img src={Charity_Chain_logo}/>
+                    <Slider {...settings}>
+                    {images.map((img, idx) => (
+                        <div key={idx}>
+                            <img src={img} alt={`slide-${idx}`} />
+                        </div>
+                        ))}
+                    </Slider>
                     </div>
                 </section>
             </motion.div>
