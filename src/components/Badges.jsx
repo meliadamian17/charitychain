@@ -26,6 +26,7 @@ import { AuthContext } from '../contexts/AuthContext';
 import { useEffect } from 'react';
 import { db } from '../firebase';
 import { getDatabase, ref, get } from "firebase/database";
+import { NumericFormat } from 'react-number-format';
 
 
 // const badges = [
@@ -102,6 +103,8 @@ const Badges = () => {
     let uid = "";
     const [badgesToShow, setBadgesToShow] = useState([]);
     const [donations, setDonations] = useState([]);
+    const [totalDonation, setTotalDonation] = useState(0);  // <-- Declare state for total donation
+
 
 
 
@@ -110,7 +113,11 @@ const Badges = () => {
         uid = currentUser.uid;
         if(uid){
             const userRef = ref(db, `Users/${currentUser.uid}/Donations`);
+            const totalRef = ref(db, `Users/${uid}/Total`);
             console.log("UID", uid);
+        get(totalRef).then((snapshot) => {
+            setTotalDonation(snapshot.val())
+        });
 
         // Using 'get' function to fetch the data
         get(userRef).then((snapshot) => {
@@ -184,20 +191,25 @@ const Badges = () => {
         variants={fadeIn("right","spring",0.2 * index, 0.75)}
         >
         <div key={index} className='m-2'>
-            <img height={90} width={90} src={badgeImg} alt="badge" />
+            <img height={120} width={120} src={badgeImg} alt="badge" />
         </div>
         </motion.div>
-    )) : <p className={`${styles.mainSectionSubText}`}> Sign In to Earn Badges!</p>;
+    )) : <p className={`${styles.mainSectionSubText}`}> Sign In to Earn Badges and Donate!</p>;
+
+    const donations_display = currentUser != null ? <> <p className={`${styles.mainSectionSubText} mt-14 text-lg`}> You've Donated </p>
+    <p className={`${styles.mainSectionTitleText} mt-0`}> <NumericFormat displayType="text" value={totalDonation.toFixed(2)} thousandSeparator={true} prefix={'$'}/> </p>
+    </> : <></>
 
     return (
         <motion.div variants={textVariant()}>
             <section id="badges"className='flex flex-col items-center'>
-                <p className={styles.mainSectionTitleText + ' border-b-2 border-black pb-2'}>Your Stats</p>
+                <p className={styles.mainSectionTitleText + ' border-b-2 border-black pb-2'}>Achievements</p>
                 
                 <div className='flex justify-center mt-10'>
                     <>{badges} </>
                 </div>
-                
+
+                <> {donations_display} </>
 
             </section>
         </motion.div>
