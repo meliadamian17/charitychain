@@ -1,4 +1,4 @@
-node_modules
+node_modules/*
 node_modules/.bin/acorn
 node_modules/.bin/autoprefixer
 node_modules/.bin/browserslist
