@@ -123,46 +123,46 @@ const Badges = () => {
                 const earnedBadges = [];
 
 
-                if (donationData['Social (BLM)'] <= tier1) {
+                if (donationData['Social (BLM)'] <= tier2) {
                     earnedBadges.push(BLM1);
-                } else if (donationData['Social (BLM)'] <= tier2) {
-                    earnedBadges.push(BLM2);
                 } else if (donationData['Social (BLM)'] <= tier3) {
+                    earnedBadges.push(BLM2);
+                } else {
                     earnedBadges.push(BLM3);
                 }
-                if (donationData['Social (Indigenous)'] <= tier1) {
+                if (donationData['Social (Indigenous)'] <= tier2) {
                     earnedBadges.push(Native1);
-                } else if (donationData['Social (Indigenous)'] <= tier2) {
-                    earnedBadges.push(Native2);
                 } else if (donationData['Social (Indigenous)'] <= tier3) {
+                    earnedBadges.push(Native2);
+                } else {
                     earnedBadges.push(Native3);
                 }
-                if (donationData['Nature'] <= tier1) {
+                if (donationData['Nature'] <= tier2) {
                     earnedBadges.push(Nature1);
-                } else if (donationData['Nature'] <= tier2) {
-                    earnedBadges.push(Nature2);
                 } else if (donationData['Nature'] <= tier3) {
+                    earnedBadges.push(Nature2);
+                } else {
                     earnedBadges.push(Nature3);
                 }
-                if (donationData['Health'] <= tier1) {
+                if (donationData['Health'] <= tier2) {
                     earnedBadges.push(Health1);
-                } else if (donationData['Health'] <= tier2) {
-                    earnedBadges.push(Health2);
                 } else if (donationData['Health'] <= tier3) {
+                    earnedBadges.push(Health2);
+                } else {
                     earnedBadges.push(Health3);
                 }
-                if (donationData['LGBTQ+'] <= tier1) {
+                if (donationData['LGBTQ+'] <= tier2) {
                     earnedBadges.push(LGBTQ1);
-                } else if (donationData['LGBTQ+'] <= tier2) {
-                    earnedBadges.push(LGBTQ2);
                 } else if (donationData['LGBTQ+'] <= tier3) {
+                    earnedBadges.push(LGBTQ2);
+                } else {
                     earnedBadges.push(LGBTQ3);
                 }
-                if (donationData['Peace'] <= tier1) {
+                if (donationData['Peace'] <= tier2) {
                     earnedBadges.push(Ukraine1);
-                } else if (donationData['Peace'] <= tier2) {
-                    earnedBadges.push(Ukraine2);
                 } else if (donationData['Peace'] <= tier3) {
+                    earnedBadges.push(Ukraine2);
+                } else {
                     earnedBadges.push(Ukraine3);
                 }
 

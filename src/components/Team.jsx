@@ -7,7 +7,7 @@ import { textVariant } from "../utils/motion";
 const Team = () => {
 
     return (
-        <motion.div variants={textVariant()}>
+        <motion.div variants={textVariant()} className="mb-10">
         <div className="aboutDescription">
             <div className="aboutDes">
             <div className={styles.mainSectionTitleText}>
