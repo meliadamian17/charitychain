@@ -48,6 +48,7 @@ const Navbar = () => {
       .then((userCredential) => {
         setCreateAccountSuccess(true);
         console.log(userCredential.user);
+        createUserProfileDocument(user);
         setPopupOpen(false);
       })
       .catch((error) => {
