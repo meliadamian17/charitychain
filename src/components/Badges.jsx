@@ -194,7 +194,11 @@ const Badges = () => {
             <img height={90} width={90} src={badgeImg} alt="badge" />
         </div>
         </motion.div>
-    )) : <p className={`${styles.mainSectionSubText}`}> Sign In to Earn Badges!</p>;
+    )) : <p className={`${styles.mainSectionSubText}`}> Sign In to Earn Badges and Donate!</p>;
+
+    const donations_display = currentUser != null ? <> <p className={`${styles.mainSectionSubText} mt-14 text-lg`}> You've Donated </p>
+    <p className={`${styles.mainSectionTitleText} mt-0`}> <NumericFormat displayType="text" value={totalDonation.toFixed(2)} thousandSeparator={true} prefix={'$'}/> </p>
+    </> : <></>
 
     return (
         <motion.div variants={textVariant()}>
@@ -205,9 +209,7 @@ const Badges = () => {
                     <>{badges} </>
                 </div>
 
-                <p className={`${styles.mainSectionSubText} mt-14 text-lg`}> You've Donated </p>
-                <p className={`${styles.mainSectionTitleText} mt-0`}> <NumericFormat displayType="text" value={totalDonation.toFixed(2)} thousandSeparator={true} prefix={'$'}/> </p>
-                
+                <> {donations_display} </>
 
             </section>
         </motion.div>
