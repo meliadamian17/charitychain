@@ -19,12 +19,11 @@ function Item(data){
                             <img src={value.img} alt="" />
             
                             <div className="info">
-                                <h3 className='name text-dark-olive'>{value.name}</h3>    
-                                <span className='text-dark-olive'>{value.location}</span>
+                                <h3 className='name text-dark-olive'>{value.name}</h3>
                             </div>                
                         </div>
                         <div className="item text-dark-olive">
-                            <span>{value.score}</span>
+                            <span>{value.total}</span>
                         </div>
                     </div>
                     )

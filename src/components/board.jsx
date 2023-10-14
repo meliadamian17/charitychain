@@ -1,10 +1,33 @@
 import React, { useState } from 'react'
 import Profiles from './profiles';
-import { Leaderboard } from './database';
 import { styles } from '../styles';
 import { SectionWrapper } from '../HOC';
 import { motion } from 'framer-motion';
 import { textVariant } from '../utils/motion';
+import { db } from '../firebase';
+import { onValue, ref } from 'firebase/database';
+
+let Leaderboard = [];
+
+const fetchData = async () => {
+  const usersRef = ref(db, 'Users');
+  onValue(usersRef, (snapshot) => {
+    const userData = snapshot.val();
+    if (userData) {
+      Leaderboard = Object.keys(userData).map((userId) => {
+        const user = userData[userId];
+        return {
+          name: user.Name.replace('Name: ', ''),
+          total: user.Total,
+          img: user.img,
+        };
+      });
+    }
+  });
+}
+
+fetchData();
+
 
 const Board = () => {
 
