@@ -8,7 +8,6 @@ const Search = () => {
           <div className="search">
             <TextField
               id="outlined-basic"
-              variant="outlined"
               fullWidth
               label="Search Here"
             />

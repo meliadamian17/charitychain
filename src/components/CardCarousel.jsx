@@ -6,7 +6,7 @@ import { CharityCard } from '.';
 import { motion } from 'framer-motion';
 import { textVariant } from '../utils/motion';
 import { SectionWrapper } from '../HOC';
-
+import Search from './Search';
 const CardCarousel = () => {
   const responsive = {
     superLargeDesktop: {
@@ -38,7 +38,8 @@ const CardCarousel = () => {
   return (
     <motion.div variants={textVariant()}>
       <section>
-        <p className={styles.mainSectionTitleText + ' border-b-2 border-black pb-2'}>Charities</p>
+        <p className={styles.mainSectionTitleText + ' border-b-2 border-black pb-2 mb-10'}>Charities</p>
+        <Search />
         <p className={styles.mainSectionSubText + ' mt-10'}>Popular</p>
         <Carousel responsive={responsive} className='mt-[-20]'>
           { cardComponents }
