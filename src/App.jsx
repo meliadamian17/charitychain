@@ -8,7 +8,7 @@ const App = () => {
   return (
     
     <BrowserRouter>
-    <div className= "relative z-0 bg-primary">
+    <div className= "relative z-0 my-main-bg">
       <div className>
 
       

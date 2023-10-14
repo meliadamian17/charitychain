@@ -1,6 +1,9 @@
 import React from 'react';
 import TempBadge from '../assets/temp_badge.png'
 import { styles } from '../styles'
+import { SectionWrapper } from '../HOC';
+import { motion } from 'framer-motion';
+import { textVariant } from '../utils/motion';
 
 const badges = [
     {
@@ -22,17 +25,19 @@ const badges = [
 
 const Badges = () => {
     return (
-        <section className='flex flex-col items-center'>
-            <p className={styles.mainSectionTitleText + ' border-b-2 border-black pb-2'}>Your Badges</p>
-            <div className='flex justify-center mt-10'>
-            {badges.map((badge) => (
-                <div key={badge.id} className='m-2'>
-                    <img height={90} width={90} src={badge.image} alt={badge.name} />
+        <motion.div variants={textVariant()}>
+            <section className='flex flex-col items-center'>
+                <p className={styles.mainSectionTitleText + ' border-b-2 border-black pb-2'}>Your Badges</p>
+                <div className='flex justify-center mt-10'>
+                {badges.map((badge) => (
+                    <div key={badge.id} className='m-2'>
+                        <img height={90} width={90} src={badge.image} alt={badge.name} />
+                    </div>
+                ))}
                 </div>
-            ))}
-            </div>
-        </section>
+            </section>
+        </motion.div>
     );
 };
 
-export default Badges;
+export default SectionWrapper(Badges, "")

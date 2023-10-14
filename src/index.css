@@ -61,7 +61,7 @@
 }
 
 .my-bg-primary{
-  background: #BEADFA;
+  background: #2C3333;
 }
 
 .my-bg-secondary{
@@ -81,4 +81,16 @@
 .aboutDes {
   display: inline-block;
   width: 50%;
+}
+
+.my-main-bg{
+  background: #FFFFFF;
+}
+
+.text-light-teal{
+  color: #0E8388;
+}
+
+.text-my-olive{
+  color: #2E4F4F;
 }
