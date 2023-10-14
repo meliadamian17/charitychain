@@ -9,10 +9,17 @@ import { textVariant } from '../utils/motion';
 import { SectionWrapper } from '../HOC';
 import Search from './Search';
 import { styles } from '../styles';
+import MultiActionAreaCard from './CharityCard';
 
 const CardCarousel = () => {
   const [charityData, setCharityData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [charities, setCharities] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const filteredCharities = charities.filter(charity => 
+    charity.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,6 +29,11 @@ const CardCarousel = () => {
           const data = snapshot.val();
           const charities = Object.values(data);
           setCharityData(charities);
+          const charityArray = [];
+          for (let id in data) {
+            charityArray.push({ id, ...data[id] });
+          }
+          setCharities(charityArray);
           setLoading(false);
         } else {
           setLoading(false);
@@ -43,16 +55,22 @@ const CardCarousel = () => {
     <CharityCard key={index} charity={charity} />
   ));
 
+  const cardComponents2 = filteredCharities.map((charity, index) => (
+    <CharityCard key={index} charity={charity} />
+  ));
+
+
   return (
     <motion.div variants={textVariant()}>
       <section id="charities">
         <p className={styles.mainSectionTitleText + ' border-b-2 border-black pb-2 mb-10'}>
           Charities
         </p>
-        <Search />
-
+        
+        <Search onSearchChange={setSearchTerm} />
         <p className={styles.subSectionSubText + ' mt-10'}>Popular</p>
         <div className="my-carousel-bg rounded-3xl p-5 my-5">
+          
           {loading ? (
             <p>Loading...</p>
           ) : (
@@ -60,6 +78,10 @@ const CardCarousel = () => {
               {cardComponents}
             </Carousel>
           )}
+          {/* {filteredCharities.map(charity => 
+        <MultiActionAreaCard key={charity.id} charity={charity} />
+      )} */}
+
         </div>
 
         {/* Add similar sections for "New" and "Diversity" here if needed */}
