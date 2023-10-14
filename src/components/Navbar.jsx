@@ -151,12 +151,12 @@ const Navbar = () => {
                                     onChange={(e)=>setPassword(e.target.value)} />
                 </div>
                 <div className="mb-6 flex items-center justify-between">
-                <button className="text-dark-olive font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline border" type="button">
-                    Sign In
-                </button>
-                <a className="inline-block align-baseline font-bold text-sm text-dark-olive" href="#">
-                    Create Account
-                </a>
+                <button className="text-dark-olive font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline border" type="button" onClick={isCreateAccountMode ? onCreateAccount : onLogin}>
+        {isCreateAccountMode ? 'Create Account' : 'Sign In'}
+      </button>
+      <a className="inline-block align-baseline font-bold text-sm text-dark-olive" href="#" onClick={toggleMode}>
+        {isCreateAccountMode ? 'Already have an account? Sign In' : 'Create Account'}
+      </a>
                 </div>
                 </form>
             <button className="mt-4 text-dark-olive py-1 px-2 rounded-full self-end border" onClick={close}>Close</button>
