@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './index.css'
-import { Navbar, Home, Search } from './components'
+import { Navbar, Home, Search, Badges, Carousel } from './components'
 import { BrowserRouter } from 'react-router-dom'
 
 const App = () => {
@@ -15,6 +15,8 @@ const App = () => {
       <Navbar />
       <Home />
       <Search />
+      <Carousel />
+      <Badges />
       </div>
       <div className="relative z-0">
        {/*footer*/}
