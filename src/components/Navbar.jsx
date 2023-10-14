@@ -3,7 +3,10 @@ import { Link } from "react-router-dom";
 
 import { styles } from "../styles";
 import { navLinks } from "../constants";
-import { Charity_Chain_logo, menu, close } from "../assets";
+import Charity_Chain_logo from "../assets/Charity_Chain_logo.png";
+import menu from "../assets/menu.png";
+import close from "../assets/close.png";
+
 
 const Navbar = () => {
   const [active, setActive] = useState("");
@@ -43,8 +46,8 @@ const Navbar = () => {
           }}
         >
           <img src={Charity_Chain_logo} alt='logo' className='w-9 h-9 object-contain' />
-          <p className='text-white text-[18px] font-bold cursor-pointer flex '>
-            Damian Melia
+          <p className='text-darkest text-[18px] font-bold cursor-pointer flex '>
+            CharityChain | Linking Donations to Charities
             
           </p>
         </Link>

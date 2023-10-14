@@ -5,6 +5,6 @@ import Search from './Search'
 
 export {
     Navbar,
-    Home,
+    Home,   
     Search
 }
