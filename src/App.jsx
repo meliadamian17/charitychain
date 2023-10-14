@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './index.css'
-import { Navbar, Home, Search, Badges, Carousel } from './components'
+import { Navbar, Home, Search, Badges, Carousel, CharityCard } from './components'
 import { BrowserRouter } from 'react-router-dom'
 
 const App = () => {
@@ -14,6 +14,7 @@ const App = () => {
       
       <Navbar />
       <Home />
+      <CharityCard />
       <Search />
       <Carousel />
       <Badges />
