@@ -21,10 +21,11 @@ const MultiActionAreaCard = ({ charity }) => {
   const [donationAmount, setDonationAmount] = useState(0);
   const [showSharePopup, setShowSharePopup] = useState(false);
   const [shareLink, setShareLink] = useState('');
-  const remainingAmount = goal - current;
+  const remainingAmount = current >= goal ? current - goal : goal - current;
+
 
   const handleDonation = () => {
-    if (donationAmount > 0 && donationAmount <= remainingAmount) {
+    if (donationAmount > 0) {
       const charityRef = ref(db, `/Charities/${charity.id}`);
       const user = auth.currentUser;
   
@@ -82,10 +83,10 @@ const MultiActionAreaCard = ({ charity }) => {
         alert('Failed to copy link to clipboard');
       });
   };
-
+  const linearProgressBarColor = current >= goal ? "green" : "primary";
   return (
     
-      <Card sx={{ maxWidth: 345, borderRadius: "10px", opacity: current === goal ? 0.5 : 1, }}>
+      <Card sx={{ maxWidth: 345, borderRadius: "10px" }}>
         
           <CardMedia
             component="img"
@@ -101,14 +102,14 @@ const MultiActionAreaCard = ({ charity }) => {
             <Typography variant="body2" color="text.secondary" sx={{ fontFamily:'Poppins, sans-serif' }}>
               { cause }
             </Typography>
-            <LinearProgress variant="determinate" value={progress} sx={{ height: 10, borderRadius: "5px" }} />
-            <Typography variant="body2" color="text.secondary" sx={{ fontFamily: 'Poppins, sans-serif' }}>
-            {current === goal ? `Completed $(${current} of $${goal})` : `Current: $${current} of $${goal}`}
+            <LinearProgress variant="determinate" value={progress} sx={{ height: 10, borderRadius: "5px", backgroundColor: linearProgressBarColor, }} />
+            <Typography variant="body2" color="text.secondary" sx={{ fontFamily: 'Poppins, sans-serif', marginTop: '5px' }}>
+            {current >= goal ? `Amazing: $(${current} of $${goal})` : `Current: $${current} of $${goal}`}
             </Typography>
           </CardContent>
         
         <CardActions>
-          <Button size="medium" sx={{ fontFamily: 'Poppins, sans-serif', color: "#0E8388"}} onClick={() => setPopupOpen(true)} disabled={current === goal}>
+          <Button size="medium" sx={{ fontFamily: 'Poppins, sans-serif', color: "#0E8388"}} onClick={() => setPopupOpen(true)}>
             Donate
           </Button>
           <Popup open={isPopupOpen}
@@ -135,7 +136,11 @@ const MultiActionAreaCard = ({ charity }) => {
               onChange={(e) => setDonationAmount(e.target.value)}
               sx={{ marginBottom: '10px' }}
             />
-            <p className="text-black">Amount Left Till Goal: ${remainingAmount}</p>
+            <p className="text-black">
+          {current >= goal
+            ? `Amount Exceeding Goal: $${remainingAmount}`
+            : `Amount Left Till Goal: $${remainingAmount}`}
+        </p>
             <Button
               variant="contained"
               onClick={handleDonation}

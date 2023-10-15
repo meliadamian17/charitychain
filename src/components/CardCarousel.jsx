@@ -59,7 +59,6 @@ const CardCarousel = () => {
       <CharityCard key={index} charity={charity} />
   )) : <p className={`${styles.mainSectionSubText}`}>No Results Found</p>;
 
-
   return (
     <motion.div variants={textVariant()}>
       <section id="charities">
