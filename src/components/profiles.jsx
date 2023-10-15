@@ -14,7 +14,7 @@ function Item(data){
         <>
             {
                 data.map((value, index) => (
-                    <div className="flex" key={index}>
+                    <div className={`flex ${value.name === "Bryan Tam (he/him)" ? 'bg-amber-100/70 pl-2 pr-2 pt-2 pb-2 rounded-full' : ''}`} key={index}>
                         <div className="item">
                             <img src={value.img} alt="" />
             
