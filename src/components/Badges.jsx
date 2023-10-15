@@ -92,6 +92,26 @@ import { NumericFormat } from 'react-number-format';
 //     }
 // ];
 
+function calculateRank(totalDonation) {
+    if (totalDonation < 1) {
+        return 'Top 99%';
+    } else if (totalDonation >= 1 && totalDonation <= 50) {
+        return 'Top 75%';
+    } else if (totalDonation >= 51 && totalDonation <= 250) {
+        return 'Top 40%';
+    } else if (totalDonation >= 251 && totalDonation <= 1000) {
+        return 'Top 15%';
+    } else if (totalDonation >= 1001 && totalDonation <= 10000) {
+        return 'Top 3%';
+    } else if (totalDonation >= 10001 && totalDonation <= 100000) {
+        return 'Top 1%';
+    } else if (totalDonation > 100000) {
+        return 'Top 0.01%';
+    }
+    return 'N/A';
+}
+
+
 const Badges = () => {
 
     const tier1 = 10;
@@ -105,8 +125,7 @@ const Badges = () => {
     const [donations, setDonations] = useState([]);
     const [totalDonation, setTotalDonation] = useState(0);  // <-- Declare state for total donation
 
-
-
+    const rank = calculateRank(totalDonation);
 
     useEffect(() => {
         if (currentUser) {
@@ -201,8 +220,9 @@ const Badges = () => {
         </motion.div>
     )) : <p className={`${styles.mainSectionSubText}`}> Sign In to Earn Badges and Donate!</p>;
 
-    const donations_display = currentUser != null ? <> <p className={`${styles.mainSectionSubText} mt-14 text-lg py-2`}> You've Donated</p>
-    <p className={`${styles.mainSectionTitleText} mt-0`}> <NumericFormat displayType="text" value={totalDonation.toFixed(2)} thousandSeparator={true} prefix='$'/> </p>
+    const donations_display = currentUser != null ? <> <p className={`${styles.mainSectionSubText} mt-10 text-lg py-2`}> You've Donated</p>
+    <p className={`${styles.mainSectionTitleText} mt-0`}> <NumericFormat displayType="text" value={totalDonation.toFixed(2)} thousandSeparator={true} prefix='$'/></p>
+    <p className={`${styles.subSectionSubText}`}>You place in the top { rank }.</p>
     </> : <></>
 
     return (

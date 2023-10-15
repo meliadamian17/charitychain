@@ -40,7 +40,7 @@ const Board = () => {
       <section className='flex flex-col items-center'>
         <div className="board">
           <div className={`${styles.mainSectionTitleText} + 'leaderboard border-b-2 border-black pb-2'`}>
-            Leaderboard
+            Leaderboard 🏆
           </div>
           <Profiles Leaderboard={leaderboard}></Profiles>
         </div>
