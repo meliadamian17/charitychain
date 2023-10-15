@@ -12,6 +12,8 @@ import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } f
 import { auth } from '../firebase';
 import { AuthContext } from "../contexts/AuthContext";
 import person from "../assets/person.png";
+import qr from "../assets/qrcode.png";
+import { autocompleteClasses } from "@mui/material";
 
 
 const Navbar = () => {
@@ -144,6 +146,24 @@ const Navbar = () => {
               <span>{nav.title}</span>
               </li>
             ))}
+            <li>
+            <Popup trigger={<button className="bg-transparent text-white text-[18px] font-medium rounded-full"> Share </button>} modal
+          contentStyle={{borderRadius: '15px', width: 'auto', height: 'auto', display: 'flex', flexDirection: 'column', padding: '0 60px'}}>
+          {close => (
+              <div className="p-4 bg-white  flex flex-col items-center">
+              <h2 className="text-2xl font-black mb-6 text-darkest-green">Share</h2>
+              <img src={qr}height={250} width={250}></img>
+           
+              <button className="mt-4 text-dark-olive py-1 px-2 rounded-full self-end border" 
+              onClick={() =>{
+                close();
+              }}>
+                Close
+                </button>
+              </div>
+          )}
+          </Popup>
+            </li>
 
           {!currentUser && (<li>
           <Popup trigger={<button className="bg-transparent text-white text-[18px] font-medium rounded-full"> Join Us! </button>} modal
