@@ -93,19 +93,17 @@ import { NumericFormat } from 'react-number-format';
 // ];
 
 function calculateRank(totalDonation) {
-    if (totalDonation < 1) {
+    if (totalDonation < 20) {
         return 'Top 99%';
-    } else if (totalDonation >= 1 && totalDonation <= 50) {
+    } else if (totalDonation >= 20 && totalDonation <= 100) {
         return 'Top 75%';
-    } else if (totalDonation >= 51 && totalDonation <= 250) {
-        return 'Top 40%';
-    } else if (totalDonation >= 251 && totalDonation <= 1000) {
+    } else if (totalDonation >= 100 && totalDonation <= 1000) {
+        return 'Top 50%';
+    } else if (totalDonation >= 1000 && totalDonation <= 1850) {
         return 'Top 15%';
-    } else if (totalDonation >= 1001 && totalDonation <= 10000) {
-        return 'Top 3%';
-    } else if (totalDonation >= 10001 && totalDonation <= 100000) {
+    } else if (totalDonation >= 1850 && totalDonation <= 2000) {
         return 'Top 1%';
-    } else if (totalDonation > 100000) {
+    } else if (totalDonation > 2000) {
         return 'Top 0.01%';
     }
     return 'N/A';

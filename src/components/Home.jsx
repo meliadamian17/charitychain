@@ -78,7 +78,7 @@ const Home = () => {
                     <div className={styles.mainSectionTitleText}>
                             Who Are We?
                     </div>
-                    <div className={styles.mainSectionSubText}>
+                    <div className={styles.mainSectionSubText} style={{paddingTop: '3%', borderRadius: '10px'}}>
                         <span ref={typedTextRef}></span>
                     </div>
                     </div>
