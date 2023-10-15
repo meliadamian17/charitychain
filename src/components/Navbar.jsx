@@ -154,7 +154,7 @@ const Navbar = () => {
               <h2 className="text-2xl font-black mb-6 text-darkest-green">Share</h2>
               <img src={qr}height={250} width={250}></img>
            
-              <button className="mt-4 text-dark-olive py-1 px-2 rounded-full self-end border" 
+              <button className=" mt-10 text-dark-olive py-1 px-2 rounded-full self-end border" 
               onClick={() =>{
                 close();
               }}>
