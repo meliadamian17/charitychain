@@ -221,8 +221,8 @@ const Badges = () => {
     )) : <p className={`${styles.mainSectionSubText}`}> Sign In to Earn Badges and Donate!</p>;
 
     const donations_display = currentUser != null ? <> <p className={`${styles.mainSectionSubText} mt-10 text-lg py-2`}> You've Donated</p>
-    <p className={`${styles.mainSectionTitleText} mt-0`}> <NumericFormat displayType="text" value={totalDonation.toFixed(2)} thousandSeparator={true} prefix='$'/></p>
-    <p className={`${styles.subSectionSubText}`}>You place in the top { rank }.</p>
+    <p className={`${styles.mainSectionTitleText} bg-amber-100 pl-5 pr-5 rounded-full mt-0`}> <NumericFormat displayType="text" value={totalDonation.toFixed(2)} thousandSeparator={true} prefix='$'/></p>
+    <p className={`${styles.subSectionSubText} mt-4`}>You place in the top <span className='bg-amber-100 pt-1 pb-1 pl-4 pr-3 rounded-full'>{ rank }</span>.</p>
     </> : <></>
 
     return (
