@@ -234,3 +234,38 @@
 #teamImg {
   width: 35%;
 }
+
+.badge-container {
+  position: relative;
+  /* overflow: hidden; */
+}
+
+.badge-image {
+  transition: transform 0.3s;
+}
+
+.badge-image:hover{
+  transform: scale(1.2);
+}
+
+.badge-info {
+  position: absolute;
+  bottom: -8vh;
+  left: 50%;
+  width: 100%;
+  transform: translateX(-50%);
+  /* padding-top:10px; */
+  background: rgba(223, 223, 223, 0.2);
+  border: 1px #f5f3f3;
+  border-radius: 10px;
+  color: #2E4F4F;
+  text-align: center;
+  text-justify: distribute;
+  font-size: 15px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.badge-image:hover + .badge-info {
+  opacity: 1;
+}

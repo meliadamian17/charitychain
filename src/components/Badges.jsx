@@ -131,46 +131,46 @@ const Badges = () => {
 
 
                 if (donationData['Social (BLM)'] <= tier2) {
-                    earnedBadges.push(BLM1);
+                    earnedBadges.push({ image: BLM1, name: 'BLM', tier: 1 });
                 } else if (donationData['Social (BLM)'] <= tier3) {
-                    earnedBadges.push(BLM2);
+                    earnedBadges.push({ image: BLM2, name: 'BLM', tier: 2 });
                 } else {
-                    earnedBadges.push(BLM3);
+                    earnedBadges.push({ image: BLM3, name: 'BLM', tier: 3 });
                 }
                 if (donationData['Social (Indigenous)'] <= tier2) {
-                    earnedBadges.push(Native1);
+                    earnedBadges.push({ image: Native1, name: 'Indigenous', tier: 1 });
                 } else if (donationData['Social (Indigenous)'] <= tier3) {
-                    earnedBadges.push(Native2);
+                    earnedBadges.push({ image: Native2, name: 'Indigenous', tier: 2 });
                 } else {
-                    earnedBadges.push(Native3);
+                    earnedBadges.push({ image: Native3, name: 'Indigenous', tier: 3 });
                 }
                 if (donationData['Nature'] <= tier2) {
-                    earnedBadges.push(Nature1);
+                    earnedBadges.push({ image: Nature1, name: 'Nature', tier: 1 });
                 } else if (donationData['Nature'] <= tier3) {
-                    earnedBadges.push(Nature2);
+                    earnedBadges.push({ image: Nature2, name: 'Nature', tier: 2 });
                 } else {
-                    earnedBadges.push(Nature3);
+                    earnedBadges.push({ image: Nature3, name: 'Nature', tier: 3 });
                 }
                 if (donationData['Health'] <= tier2) {
-                    earnedBadges.push(Health1);
+                    earnedBadges.push({ image: Health1, name: 'Health', tier: 1 });
                 } else if (donationData['Health'] <= tier3) {
-                    earnedBadges.push(Health2);
+                    earnedBadges.push({ image: Health2, name: 'Health', tier: 2 });
                 } else {
-                    earnedBadges.push(Health3);
+                    earnedBadges.push({ image: Health3, name: 'Health', tier: 3 });
                 }
                 if (donationData['LGBTQ+'] <= tier2) {
-                    earnedBadges.push(LGBTQ1);
+                    earnedBadges.push({ image: LGBTQ1, name: 'LGBTQ+', tier: 1 });
                 } else if (donationData['LGBTQ+'] <= tier3) {
-                    earnedBadges.push(LGBTQ2);
+                    earnedBadges.push({ image: LGBTQ2, name: 'LGBTQ+', tier: 2 });
                 } else {
-                    earnedBadges.push(LGBTQ3);
+                    earnedBadges.push({ image: LGBTQ3, name: 'LGBTQ+', tier: 3 });
                 }
                 if (donationData['Peace'] <= tier2) {
-                    earnedBadges.push(Ukraine1);
+                    earnedBadges.push({ image: Ukraine1, name: 'Peace', tier: 1 });
                 } else if (donationData['Peace'] <= tier3) {
-                    earnedBadges.push(Ukraine2);
+                    earnedBadges.push({ image: Ukraine2, name: 'Peace', tier: 2 });
                 } else {
-                    earnedBadges.push(Ukraine3);
+                    earnedBadges.push({ image: Ukraine3, name: 'Peace', tier: 3 });
                 }
 
                 console.log("Badges to show: ", earnedBadges);
@@ -186,13 +186,18 @@ const Badges = () => {
 
     }, [currentUser]);
 
-    const badges = currentUser != null ? badgesToShow.map((badgeImg, index) => (
+    const badges = currentUser != null ? badgesToShow.map((badge, index) => (
         <motion.div 
         variants={fadeIn("right","spring",0.2 * index, 0.75)}
+        key={index} 
+        className='badge-container m-2'
         >
-        <div key={index} className='m-2'>
-            <img height={120} width={120} src={badgeImg} alt="badge" />
-        </div>
+        
+            <img height={120} width={120} src={badge.image} alt="badge " className='badge-image' />
+            <div className='badge-info'>
+                {badge.name} - Tier {badge.tier}
+                {/* <h1 className="text-olxive rounded-full">{`${badge.name} - Tier ${badge.tier}`}</h1> */}
+            </div>
         </motion.div>
     )) : <p className={`${styles.mainSectionSubText}`}> Sign In to Earn Badges and Donate!</p>;
 
