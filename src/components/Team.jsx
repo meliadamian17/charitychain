@@ -16,7 +16,7 @@ const Team = () => {
             <div className={styles.mainSectionTitleText}>
                     Meet Our Team
             </div>
-            <div className={styles.mainSectionSubText} style={{ backgroundColor: 'lightgrey', opacity: "0.8", padding: '2%', borderRadius: '10px', color: "darkgreen" }}>
+            <div className={styles.mainSectionSubText} style={{ backgroundColor: 'rgba(223,223,223,0.6)', opacity: "0.8", padding: '5%', borderRadius: '10px', color: "#2E4F4F" }}>
                 Meet Chris, Damian, Krit and Brandan, the team behind CharityChain. They are a group of tech entrepreneurs looking to capitalize on the sense of community great software can foster. In a world where many may feel disconnected despite being closer than we’ve ever been as a species, they believe that paying forward the goodwill of one’s deeds  will help keep us more connected than ever.
             </div>
             </div>

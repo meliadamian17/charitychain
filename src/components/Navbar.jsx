@@ -128,8 +128,8 @@ const Navbar = () => {
         >
           {/* <img src={Charity_Chain_logo} alt='logo' className='w-12 h-12 object-contain paddingX' /> */}
           
-          <p className='text-white text-[18px] font-bold cursor-pointer flex p-3'>
-            CharityChain | Linking Donations to Charities
+          <p className='text-white text-[24px] font-bold cursor-pointer flex p-3'>
+            CharityChain | Be The Link
           </p>
         </Link>
           <ul className='list-none hidden sm:flex flex-row gap-10 justify-start items-center '>

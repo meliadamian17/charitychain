@@ -214,7 +214,7 @@ const Badges = () => {
         
             <img height={120} width={120} src={badge.image} alt="badge " className='badge-image' />
             <div className='badge-info'>
-                {badge.name} - Tier {badge.tier}
+                {badge.name} • Tier {badge.tier}
                 {/* <h1 className="text-olxive rounded-full">{`${badge.name} - Tier ${badge.tier}`}</h1> */}
             </div>
         </motion.div>
@@ -230,7 +230,7 @@ const Badges = () => {
             <section id="badges"className='flex flex-col items-center'>
                 <p className={styles.mainSectionTitleText + ' border-b-2 border-black pb-2'}>Achievements</p>
                 
-                <div className='flex justify-center mt-10'>
+                <div className='flex justify-center mt-10 mb-8'>
                     <>{badges} </>
                 </div>
 
