@@ -83,7 +83,6 @@ const MultiActionAreaCard = ({ charity }) => {
         alert('Failed to copy link to clipboard');
       });
   };
-  const linearProgressBarColor = current >= goal ? "green" : "primary";
   return (
     
       <Card sx={{ maxWidth: 345, borderRadius: "10px" }}>
@@ -102,9 +101,9 @@ const MultiActionAreaCard = ({ charity }) => {
             <Typography variant="body2" color="text.secondary" sx={{ fontFamily:'Poppins, sans-serif' }}>
               { cause }
             </Typography>
-            <LinearProgress variant="determinate" value={progress} sx={{ height: 10, borderRadius: "5px", backgroundColor: linearProgressBarColor, }} />
+            <LinearProgress variant="determinate" value={current >= goal ? 100 : progress} sx={{ height: 10, borderRadius: "5px", backgroundColor: current >= goal ? "green" : "primary" }} />
             <Typography variant="body2" color="text.secondary" sx={{ fontFamily: 'Poppins, sans-serif', marginTop: '5px' }}>
-            {current >= goal ? `Amazing: $(${current} of $${goal})` : `Current: $${current} of $${goal}`}
+            {current >= goal ? `Amazing: $${current} of $${goal} | (${parseInt(current/goal*100)}%)` : `Current: $${current} of $${goal} | (${parseInt(current/goal*100)}%)`}
             </Typography>
           </CardContent>
         
@@ -134,8 +133,12 @@ const MultiActionAreaCard = ({ charity }) => {
               type="number"
               value={donationAmount}
               onChange={(e) => setDonationAmount(e.target.value)}
-              sx={{ marginBottom: '10px' }}
+              sx={{ marginBottom: '10px', borderRadius: '10%' }}
+              inputProps={{
+                step: 'any',
+              }}
             />
+            
             <p className="text-black">
           {current >= goal
             ? `Amount Exceeding Goal: $${remainingAmount}`
@@ -145,6 +148,7 @@ const MultiActionAreaCard = ({ charity }) => {
               variant="contained"
               onClick={handleDonation}
               sx={{ fontFamily: 'Poppins, sans-serif', backgroundColor: '#0E8388', color: 'white' }}
+              className='custom-close-button absolute cursor-pointer donate-button bottom-[4] right-[12]'
             >
               Donate
             </Button>
@@ -155,8 +159,15 @@ const MultiActionAreaCard = ({ charity }) => {
             <div className="relative">
               <p className="text-black mb-2">Share your donation!</p>
               <div>
-                <a href={shareLink} target="_blank" rel="noopener noreferrer" className='text-black mr-5'>Share Link</a>
-                <button onClick={copyToClipboard} className='bg-black p-2 rounded-full'>Copy to Clipboard</button>
+                <a href={shareLink} target="_blank" rel="noopener noreferrer" className='text-blue-700 mr-5'>Share Link</a>
+                <img
+                  src="../src/assets/copy.png"
+                  alt="Copy"
+                  height={20}
+                  width={20}
+                  className='cursor-pointer'
+                  onClick={copyToClipboard}
+                />
               </div>
             </div>
           </Popup>
