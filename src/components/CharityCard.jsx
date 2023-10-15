@@ -119,9 +119,10 @@ const MultiActionAreaCard = ({ charity }) => {
   onClose={() => setPopupOpen(false)}
   modal
   closeOnDocumentClick
+
   contentStyle={{
-    background: 'linear-gradient(135deg, #58C2F1, #0E8388)',
-    border: '2px solid #0E8388',
+    // background: 'linear-gradient(135deg, #58C2F1, #0E8388)',
+    border: '2px solid #FFFFFF',
     borderRadius: '20px',
     padding: '20px',
     maxWidth: '400px',
@@ -136,10 +137,13 @@ const MultiActionAreaCard = ({ charity }) => {
       alt="Close"
       height={30}
       width={30}
-      className="custom-close-button absolute top-0 right-0 cursor-pointer"
+      className="custom-close-button absolute top-0 right-0 cursor-pointer -translate-y-px"
       onClick={() => setPopupOpen(false)}
     />
-    <p className="text-black mb-2" style={{ color: 'black', fontSize: '20px', fontWeight: "bold" }}>
+    <p className="block text-my-olive text-sm font-bold mb-2" 
+    style = {{fontSize: '20px', fontWeight: "bold"}}
+    // style={{ color: 'black', fontSize: '20px', fontWeight: "bold" }}
+    >
       Please enter your contribution:
     </p>
     <TextField
@@ -154,7 +158,8 @@ const MultiActionAreaCard = ({ charity }) => {
       }}
       style={{ width: '100%', background: 'lightgrey', borderRadius: '10px' }}
     />
-    <p className="text-black" style={{ fontSize: '16px', margin: '10px 0', fontWeight: "bold" }}>
+    <p className="block text-my-olive text-sm font-bold mb-2" 
+    style = {{fontSize: '16px', fontWeight: "bold"}}>
       {current >= goal
         ? `Amount Exceeding Goal: $${remainingAmount}`
         : `Amount Left Till Goal: $${remainingAmount}`}
@@ -165,11 +170,12 @@ const MultiActionAreaCard = ({ charity }) => {
       sx={{
         fontFamily: 'Poppins, sans-serif',
         backgroundColor: 'lightgrey',
-        color: 'darkgreen',
+        color: '#2E4F4F',
         width: '40%',
         padding: '10px',
         fontSize: '18px',
         borderRadius: '10px',
+        border: '0.5px solid #2E4F4F',
         '&:hover': {
           backgroundColor: 'white',
         },
@@ -193,8 +199,8 @@ const MultiActionAreaCard = ({ charity }) => {
     modal
     closeOnDocumentClick
     contentStyle={{
-      background: 'linear-gradient(135deg, #58C2F1, #0E8388, #58C2F1)',
-      border: '2px solid #0E8388',
+      background: '#FFFFFF',
+      border: '2px solid #2E4F4F',
       borderRadius: '20px',
       padding: '20px',
       maxWidth: '400px',
@@ -205,11 +211,11 @@ const MultiActionAreaCard = ({ charity }) => {
   >
     <div className="relative">
       
-      <Typography variant="h6" component="div" sx={{ fontFamily: 'Poppins, sans-serif', fontWeight: 'bold' }}>
+      <Typography  className="text-my-olive" variant="h6" component="div" sx={{ fontFamily: 'Poppins, sans-serif', fontWeight: 'bold' }}>
         Share your donation with others
       </Typography>
-      <Typography variant="body1" color="text.secondary" sx={{ fontFamily: 'Poppins, sans-serif', marginTop: '10px', color: "white" }}>
-        Thank you for donating to<br/><span style={{ color: "lightorange", fontFamily: "Poppins, sans-serif" }}>{name}</span>.<br/> Share your donation using the link below:
+      <Typography className="text-my-olive" variant="body1" color="text.secondary" sx={{ fontFamily: 'Poppins, sans-serif', marginTop: '10px' }}>
+        Thank you for donating to<br/><span style={{fontFamily: "Poppins, sans-serif" }}>{name}</span>.<br/> Share your donation using the link below:
       </Typography>
       <div className="share-link-container" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '20px' }}>
         <a href={shareLink} target="_blank" rel="noopener noreferrer" className="share-link text-blue-700 font-bold bg-blue-200 pl-2 pr-2 rounded-full">
