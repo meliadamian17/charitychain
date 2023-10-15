@@ -22,6 +22,7 @@ const MultiActionAreaCard = ({ charity }) => {
   const [showSharePopup, setShowSharePopup] = useState(false);
   const [shareLink, setShareLink] = useState('');
   const remainingAmount = current >= goal ? current - goal : goal - current;
+  const [isInvalidAmount, setIsInvalidAmount] = useState(false);
 
 
   const handleDonation = () => {
@@ -55,6 +56,14 @@ const MultiActionAreaCard = ({ charity }) => {
                 set(userTotalRef, donationAmount);
               }
             });
+            if (current + donationAmount >= goal) {
+              setPopupOpen(false);
+              setShareLink(`http://localhost:5173/`);
+              setShowSharePopup(true);
+            } else {
+              setPopupOpen(false);
+              setShowSharePopup(true);
+            }
           })
           .catch((error) => {
             alert('Failed to update the charity. Please try again later.');
@@ -63,15 +72,9 @@ const MultiActionAreaCard = ({ charity }) => {
         alert('User is not authenticated. Please log in before donating.');
       }
     } else {
-      alert('Invalid donation amount. Please enter a valid amount.');
+      setIsInvalidAmount(true);
     }
-    if (current + donationAmount >= goal) {
-      setPopupOpen(false);
-      setShareLink(`http://localhost:5173/`);
-      setShowSharePopup(true);
-    } else {
-      setShowSharePopup(false);
-    }
+    setPopupOpen(true);
   };
 
   const copyToClipboard = () => {
@@ -111,67 +114,120 @@ const MultiActionAreaCard = ({ charity }) => {
           <Button size="medium" sx={{ fontFamily: 'Poppins, sans-serif', color: "#0E8388"}} onClick={() => setPopupOpen(true)}>
             Donate
           </Button>
-          <Popup open={isPopupOpen}
-          onClose={() => setPopupOpen(false)}
-          modal
-          closeOnDocumentClick
-          contentStyle={{ borderRadius: '15px', padding: '20px' }}
-          >
-          <div className="relative">
-            <img
-              src="../src/assets/close.png"
-              alt="Close"
-              height={30}
-              width={30}
-              className="custom-close-button absolute top-2 right-2 cursor-pointer"
-              onClick={() => setPopupOpen(false)}
-            />
-            <p className="text-black mb-2">Enter donation details here...</p>
-            <TextField
-              label="Donation Amount"
-              variant="outlined"
-              type="number"
-              value={donationAmount}
-              onChange={(e) => setDonationAmount(e.target.value)}
-              sx={{ marginBottom: '10px', borderRadius: '10%' }}
-              inputProps={{
-                step: 'any',
-              }}
-            />
-            
-            <p className="text-black">
-          {current >= goal
-            ? `Amount Exceeding Goal: $${remainingAmount}`
-            : `Amount Left Till Goal: $${remainingAmount}`}
-        </p>
-            <Button
-              variant="contained"
-              onClick={handleDonation}
-              sx={{ fontFamily: 'Poppins, sans-serif', backgroundColor: '#0E8388', color: 'white' }}
-              className='custom-close-button absolute cursor-pointer donate-button bottom-[4] right-[12]'
-            >
-              Donate
-            </Button>
-          </div>
-          </Popup>
-          {showSharePopup && (
-          <Popup open={showSharePopup} onClose={() => setShowSharePopup(false)} modal closeOnDocumentClick contentStyle={{ borderRadius: '15px', padding: '20px' }}>
-            <div className="relative">
-              <p className="text-black mb-2">Share your donation!</p>
-              <div>
-                <a href={shareLink} target="_blank" rel="noopener noreferrer" className='text-blue-700 mr-5'>Share Link</a>
-                <img
-                  src="../src/assets/copy.png"
-                  alt="Copy"
-                  height={20}
-                  width={20}
-                  className='cursor-pointer'
-                  onClick={copyToClipboard}
-                />
-              </div>
-            </div>
-          </Popup>
-        )}
+          <Popup
+  open={isPopupOpen}
+  onClose={() => setPopupOpen(false)}
+  modal
+  closeOnDocumentClick
+  contentStyle={{
+    background: 'linear-gradient(135deg, #58C2F1, #0E8388)',
+    border: '2px solid #0E8388',
+    borderRadius: '20px',
+    padding: '20px',
+    maxWidth: '400px',
+    width: '80%',
+    textAlign: 'center',
+    color: 'white',
+  }}
+>
+  <div className="relative">
+    <img
+      src="../src/assets/close.png"
+      alt="Close"
+      height={30}
+      width={30}
+      className="custom-close-button absolute top-0 right-0 cursor-pointer"
+      onClick={() => setPopupOpen(false)}
+    />
+    <p className="text-black mb-2" style={{ color: 'black', fontSize: '20px', fontWeight: "bold" }}>
+      Please enter your contribution:
+    </p>
+    <TextField
+      label="Donation Amount"
+      variant="outlined"
+      type="number"
+      value={donationAmount}
+      onChange={(e) => setDonationAmount(e.target.value)}
+      sx={{ marginBottom: '10px', marginTop: '10px' }}
+      inputProps={{
+        step: 'any',
+      }}
+      style={{ width: '100%', background: 'lightgrey', borderRadius: '10px' }}
+    />
+    <p className="text-black" style={{ fontSize: '16px', margin: '10px 0', fontWeight: "bold" }}>
+      {current >= goal
+        ? `Amount Exceeding Goal: $${remainingAmount}`
+        : `Amount Left Till Goal: $${remainingAmount}`}
+    </p>
+    <Button
+      variant="contained"
+      onClick={handleDonation}
+      sx={{
+        fontFamily: 'Poppins, sans-serif',
+        backgroundColor: 'lightgrey',
+        color: 'darkgreen',
+        width: '40%',
+        padding: '10px',
+        fontSize: '18px',
+        borderRadius: '10px',
+        '&:hover': {
+          backgroundColor: 'white',
+        },
+      }}
+      className="custom-close-button absolute cursor-pointer donate-button top-2 right-0"
+    >
+      Donate
+    </Button>
+    {isInvalidAmount && (
+      <p style={{ color: 'red', fontSize: '16px', marginTop: '10px', fontWeight: 'bold' }}>
+        Please enter a valid donation amount.
+      </p>
+    )}
+    </div>
+  </Popup>
+
+  {showSharePopup && (
+  <Popup
+    open={showSharePopup}
+    onClose={() => setShowSharePopup(false)}
+    modal
+    closeOnDocumentClick
+    contentStyle={{
+      background: 'linear-gradient(135deg, #58C2F1, #0E8388, #58C2F1)',
+      border: '2px solid #0E8388',
+      borderRadius: '20px',
+      padding: '20px',
+      maxWidth: '400px',
+      width: '80%',
+      textAlign: 'center',
+      color: 'white',
+    }}
+  >
+    <div className="relative">
+      
+      <Typography variant="h6" component="div" sx={{ fontFamily: 'Poppins, sans-serif', fontWeight: 'bold' }}>
+        Share your donation with others
+      </Typography>
+      <Typography variant="body1" color="text.secondary" sx={{ fontFamily: 'Poppins, sans-serif', marginTop: '10px', color: "white" }}>
+        Thank you for donating to<br/><span style={{ color: "lightorange", fontFamily: "Poppins, sans-serif" }}>{name}</span>.<br/> Share your donation using the link below:
+      </Typography>
+      <div className="share-link-container" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '20px' }}>
+        <a href={shareLink} target="_blank" rel="noopener noreferrer" className="share-link text-blue-700 font-bold bg-blue-200 pl-2 pr-2 rounded-full">
+          Share Link
+        </a>
+        <img
+          src="../src/assets/copy.png"
+          alt="Copy"
+          height={30}
+          width={30}
+          className="cursor-pointer bg-gray-200 p-1 rounded"
+          onClick={copyToClipboard}
+          style={{ marginLeft: '10px' }}
+        />
+      </div>
+    </div>
+  </Popup>
+)}
           <Link to={url} target="_blank" rel="noopener noreferrer">
             <img
               src="../src/assets/info.png"
