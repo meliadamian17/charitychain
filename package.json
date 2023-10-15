@@ -12,6 +12,7 @@
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@google-cloud/dialogflow": "^6.1.0",
     "@material/card": "^14.0.0",
     "@mui/material": "^5.14.13",
     "api": "^6.1.1",
