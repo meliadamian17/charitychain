@@ -201,7 +201,7 @@ const Badges = () => {
         </motion.div>
     )) : <p className={`${styles.mainSectionSubText}`}> Sign In to Earn Badges and Donate!</p>;
 
-    const donations_display = currentUser != null ? <> <p className={`${styles.mainSectionSubText} mt-14 text-lg`}> You've Donated </p>
+    const donations_display = currentUser != null ? <> <p className={`${styles.mainSectionSubText} mt-14 text-lg py-2`}> You've Donated </p>
     <p className={`${styles.mainSectionTitleText} mt-0`}> <NumericFormat displayType="text" value={totalDonation.toFixed(2)} thousandSeparator={true} prefix={'$'}/> </p>
     </> : <></>
 
