@@ -180,7 +180,7 @@ const MultiActionAreaCard = ({ charity }) => {
           backgroundColor: 'white',
         },
       }}
-      className="custom-close-button absolute cursor-pointer donate-button top-2 right-0"
+      className="custom-close-button absolute cursor-pointer donate-button"
     >
       Donate
     </Button>
